@@ -16,7 +16,7 @@ A new edit key (called the Drag-n-Release edit key) can be set, holding this key
 On release, the edit is confirmed.
 This allows for quick editing using a single button.
 
-An reset edit key can also be set.
+A reset edit key can also be set.
 
 ## Why did you create this?
 This is a Proof of Concept for an editing mechanic that, in my opinion, should be present in the Fortnite (Battle Royale) client.

@@ -28,10 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FortEZEditForm));
             this.btnInstallInterception = new System.Windows.Forms.Button();
             this.lblInterceptionStatus = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.centerPanel = new System.Windows.Forms.Panel();
+            this.grpReset = new System.Windows.Forms.GroupBox();
+            this.numResetPostClickDelay = new System.Windows.Forms.NumericUpDown();
+            this.lblResetPostClickDelay = new System.Windows.Forms.Label();
+            this.lblResetPreClickDelay = new System.Windows.Forms.Label();
+            this.numResetPreClickDelay = new System.Windows.Forms.NumericUpDown();
+            this.btnKeyReset = new System.Windows.Forms.Button();
+            this.lblKeyReset = new System.Windows.Forms.Label();
             this.grpDnR = new System.Windows.Forms.GroupBox();
             this.numReleaseDelay = new System.Windows.Forms.NumericUpDown();
             this.lblReleaseDelay = new System.Windows.Forms.Label();
@@ -42,21 +50,14 @@
             this.grpFortniteKeys = new System.Windows.Forms.GroupBox();
             this.btnFnKeyEdit = new System.Windows.Forms.Button();
             this.lblEditKey = new System.Windows.Forms.Label();
-            this.grpReset = new System.Windows.Forms.GroupBox();
-            this.numResetPostClickDelay = new System.Windows.Forms.NumericUpDown();
-            this.lblResetPostClickDelay = new System.Windows.Forms.Label();
-            this.lblResetPreClickDelay = new System.Windows.Forms.Label();
-            this.numResetPreClickDelay = new System.Windows.Forms.NumericUpDown();
-            this.btnKeyReset = new System.Windows.Forms.Button();
-            this.lblKeyReset = new System.Windows.Forms.Label();
             this.centerPanel.SuspendLayout();
+            this.grpReset.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numResetPostClickDelay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numResetPreClickDelay)).BeginInit();
             this.grpDnR.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numReleaseDelay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHoldDelay)).BeginInit();
             this.grpFortniteKeys.SuspendLayout();
-            this.grpReset.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numResetPostClickDelay)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numResetPreClickDelay)).BeginInit();
             this.SuspendLayout();
             // 
             // btnInstallInterception
@@ -84,7 +85,7 @@
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label1.Location = new System.Drawing.Point(-1, -2);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(508, 41);
+            this.label1.Size = new System.Drawing.Size(332, 41);
             this.label1.TabIndex = 2;
             // 
             // centerPanel
@@ -96,6 +97,83 @@
             this.centerPanel.Name = "centerPanel";
             this.centerPanel.Size = new System.Drawing.Size(332, 240);
             this.centerPanel.TabIndex = 3;
+            // 
+            // grpReset
+            // 
+            this.grpReset.Controls.Add(this.numResetPostClickDelay);
+            this.grpReset.Controls.Add(this.lblResetPostClickDelay);
+            this.grpReset.Controls.Add(this.lblResetPreClickDelay);
+            this.grpReset.Controls.Add(this.numResetPreClickDelay);
+            this.grpReset.Controls.Add(this.btnKeyReset);
+            this.grpReset.Controls.Add(this.lblKeyReset);
+            this.grpReset.Location = new System.Drawing.Point(3, 153);
+            this.grpReset.Name = "grpReset";
+            this.grpReset.Size = new System.Drawing.Size(326, 82);
+            this.grpReset.TabIndex = 6;
+            this.grpReset.TabStop = false;
+            this.grpReset.Text = "Reset Edit";
+            // 
+            // numResetPostClickDelay
+            // 
+            this.numResetPostClickDelay.Location = new System.Drawing.Point(255, 49);
+            this.numResetPostClickDelay.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.numResetPostClickDelay.Name = "numResetPostClickDelay";
+            this.numResetPostClickDelay.Size = new System.Drawing.Size(64, 20);
+            this.numResetPostClickDelay.TabIndex = 5;
+            this.numResetPostClickDelay.ValueChanged += new System.EventHandler(this.changeDelayEvent);
+            // 
+            // lblResetPostClickDelay
+            // 
+            this.lblResetPostClickDelay.AutoSize = true;
+            this.lblResetPostClickDelay.Location = new System.Drawing.Point(165, 51);
+            this.lblResetPostClickDelay.Name = "lblResetPostClickDelay";
+            this.lblResetPostClickDelay.Size = new System.Drawing.Size(84, 13);
+            this.lblResetPostClickDelay.TabIndex = 4;
+            this.lblResetPostClickDelay.Text = "Post-click delay:";
+            // 
+            // lblResetPreClickDelay
+            // 
+            this.lblResetPreClickDelay.AutoSize = true;
+            this.lblResetPreClickDelay.Location = new System.Drawing.Point(10, 51);
+            this.lblResetPreClickDelay.Name = "lblResetPreClickDelay";
+            this.lblResetPreClickDelay.Size = new System.Drawing.Size(79, 13);
+            this.lblResetPreClickDelay.TabIndex = 3;
+            this.lblResetPreClickDelay.Text = "Pre-click delay:";
+            // 
+            // numResetPreClickDelay
+            // 
+            this.numResetPreClickDelay.Location = new System.Drawing.Point(95, 49);
+            this.numResetPreClickDelay.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.numResetPreClickDelay.Name = "numResetPreClickDelay";
+            this.numResetPreClickDelay.Size = new System.Drawing.Size(64, 20);
+            this.numResetPreClickDelay.TabIndex = 2;
+            this.numResetPreClickDelay.ValueChanged += new System.EventHandler(this.changeDelayEvent);
+            // 
+            // btnKeyReset
+            // 
+            this.btnKeyReset.Location = new System.Drawing.Point(62, 20);
+            this.btnKeyReset.Name = "btnKeyReset";
+            this.btnKeyReset.Size = new System.Drawing.Size(81, 23);
+            this.btnKeyReset.TabIndex = 1;
+            this.btnKeyReset.UseVisualStyleBackColor = true;
+            this.btnKeyReset.Click += new System.EventHandler(this.changeKeyEvent);
+            // 
+            // lblKeyReset
+            // 
+            this.lblKeyReset.AutoSize = true;
+            this.lblKeyReset.Location = new System.Drawing.Point(10, 25);
+            this.lblKeyReset.Name = "lblKeyReset";
+            this.lblKeyReset.Size = new System.Drawing.Size(28, 13);
+            this.lblKeyReset.TabIndex = 0;
+            this.lblKeyReset.Text = "Key:";
             // 
             // grpDnR
             // 
@@ -203,83 +281,6 @@
             this.lblEditKey.TabIndex = 0;
             this.lblEditKey.Text = "Edit Key:";
             // 
-            // grpReset
-            // 
-            this.grpReset.Controls.Add(this.numResetPostClickDelay);
-            this.grpReset.Controls.Add(this.lblResetPostClickDelay);
-            this.grpReset.Controls.Add(this.lblResetPreClickDelay);
-            this.grpReset.Controls.Add(this.numResetPreClickDelay);
-            this.grpReset.Controls.Add(this.btnKeyReset);
-            this.grpReset.Controls.Add(this.lblKeyReset);
-            this.grpReset.Location = new System.Drawing.Point(3, 153);
-            this.grpReset.Name = "grpReset";
-            this.grpReset.Size = new System.Drawing.Size(326, 82);
-            this.grpReset.TabIndex = 6;
-            this.grpReset.TabStop = false;
-            this.grpReset.Text = "Reset Edit";
-            // 
-            // numResetPostClickDelay
-            // 
-            this.numResetPostClickDelay.Location = new System.Drawing.Point(255, 49);
-            this.numResetPostClickDelay.Maximum = new decimal(new int[] {
-            200,
-            0,
-            0,
-            0});
-            this.numResetPostClickDelay.Name = "numResetPostClickDelay";
-            this.numResetPostClickDelay.Size = new System.Drawing.Size(64, 20);
-            this.numResetPostClickDelay.TabIndex = 5;
-            this.numResetPostClickDelay.ValueChanged += new System.EventHandler(this.changeDelayEvent);
-            // 
-            // lblResetPostClickDelay
-            // 
-            this.lblResetPostClickDelay.AutoSize = true;
-            this.lblResetPostClickDelay.Location = new System.Drawing.Point(165, 51);
-            this.lblResetPostClickDelay.Name = "lblResetPostClickDelay";
-            this.lblResetPostClickDelay.Size = new System.Drawing.Size(84, 13);
-            this.lblResetPostClickDelay.TabIndex = 4;
-            this.lblResetPostClickDelay.Text = "Post-click delay:";
-            // 
-            // lblResetPreClickDelay
-            // 
-            this.lblResetPreClickDelay.AutoSize = true;
-            this.lblResetPreClickDelay.Location = new System.Drawing.Point(10, 51);
-            this.lblResetPreClickDelay.Name = "lblResetPreClickDelay";
-            this.lblResetPreClickDelay.Size = new System.Drawing.Size(79, 13);
-            this.lblResetPreClickDelay.TabIndex = 3;
-            this.lblResetPreClickDelay.Text = "Pre-click delay:";
-            // 
-            // numResetPreClickDelay
-            // 
-            this.numResetPreClickDelay.Location = new System.Drawing.Point(95, 49);
-            this.numResetPreClickDelay.Maximum = new decimal(new int[] {
-            200,
-            0,
-            0,
-            0});
-            this.numResetPreClickDelay.Name = "numResetPreClickDelay";
-            this.numResetPreClickDelay.Size = new System.Drawing.Size(64, 20);
-            this.numResetPreClickDelay.TabIndex = 2;
-            this.numResetPreClickDelay.ValueChanged += new System.EventHandler(this.changeDelayEvent);
-            // 
-            // btnKeyReset
-            // 
-            this.btnKeyReset.Location = new System.Drawing.Point(62, 20);
-            this.btnKeyReset.Name = "btnKeyReset";
-            this.btnKeyReset.Size = new System.Drawing.Size(81, 23);
-            this.btnKeyReset.TabIndex = 1;
-            this.btnKeyReset.UseVisualStyleBackColor = true;
-            this.btnKeyReset.Click += new System.EventHandler(this.changeKeyEvent);
-            // 
-            // lblKeyReset
-            // 
-            this.lblKeyReset.AutoSize = true;
-            this.lblKeyReset.Location = new System.Drawing.Point(10, 25);
-            this.lblKeyReset.Name = "lblKeyReset";
-            this.lblKeyReset.Size = new System.Drawing.Size(28, 13);
-            this.lblKeyReset.TabIndex = 0;
-            this.lblKeyReset.Text = "Key:";
-            // 
             // FortEZEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -290,6 +291,7 @@
             this.Controls.Add(this.btnInstallInterception);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "FortEZEditForm";
@@ -298,16 +300,16 @@
             this.Load += new System.EventHandler(this.FortEZEditForm_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FortEZEditForm_KeyPress);
             this.centerPanel.ResumeLayout(false);
+            this.grpReset.ResumeLayout(false);
+            this.grpReset.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numResetPostClickDelay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numResetPreClickDelay)).EndInit();
             this.grpDnR.ResumeLayout(false);
             this.grpDnR.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numReleaseDelay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHoldDelay)).EndInit();
             this.grpFortniteKeys.ResumeLayout(false);
             this.grpFortniteKeys.PerformLayout();
-            this.grpReset.ResumeLayout(false);
-            this.grpReset.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numResetPostClickDelay)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numResetPreClickDelay)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

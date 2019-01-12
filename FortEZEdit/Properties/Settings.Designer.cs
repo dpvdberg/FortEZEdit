@@ -106,5 +106,17 @@ namespace FortEZEdit.Properties {
                 this["Delay_ResetPostClick"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("F11")]
+        public string Key_Pause {
+            get {
+                return ((string)(this["Key_Pause"]));
+            }
+            set {
+                this["Key_Pause"] = value;
+            }
+        }
     }
 }

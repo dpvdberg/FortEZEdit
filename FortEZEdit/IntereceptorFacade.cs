@@ -41,9 +41,20 @@ namespace FortEZEdit
 
         private bool waitingForDnRUp;
         private bool isDnRDown;
+        private bool paused;
         private void Input_OnKeyPressed(object sender, KeyPressedEventArgs e)
         {
             Properties.Settings defaultSettings = Properties.Settings.Default;
+            if (ConvertToInterceptorKey(defaultSettings.Key_Pause) == e.Key && e.State == KeyState.Down)
+            {
+                paused = !paused;
+            }
+
+            if (paused)
+            {
+                return;
+            }
+
             if (ConvertToInterceptorKey(defaultSettings.Key_DnREdit) == e.Key)
             {
                 if (e.State == KeyState.Down && !waitingForDnRUp && !isDnRDown)

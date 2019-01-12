@@ -24,7 +24,7 @@
       <Value Profile="(Default)">20</Value>
     </Setting>
     <Setting Name="Key_Pause" Type="System.String" Scope="User">
-      <Value Profile="(Default)">F11</Value>
+      <Value Profile="(Default)">F10</Value>
     </Setting>
   </Settings>
 </SettingsFile>

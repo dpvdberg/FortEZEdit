@@ -109,7 +109,7 @@ namespace FortEZEdit.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("F11")]
+        [global::System.Configuration.DefaultSettingValueAttribute("F10")]
         public string Key_Pause {
             get {
                 return ((string)(this["Key_Pause"]));

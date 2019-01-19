@@ -55,7 +55,10 @@ namespace FortEZEdit
 
             btnKeyDnR.Text = Properties.Settings.Default.Key_DnREdit;
             settingsSetterMap[btnKeyDnR] = (s) => { Properties.Settings.Default.Key_DnREdit = (string) s; };
-            
+
+            btnDoublePump.Text = Properties.Settings.Default.Key_DoublePump;
+            settingsSetterMap[btnDoublePump] = (s) => { Properties.Settings.Default.Key_DoublePump = (string)s; };
+
             numHoldDelay.Value = Properties.Settings.Default.Delay_DnRClickStart;
             settingsSetterMap[numHoldDelay] = (s) => { Properties.Settings.Default.Delay_DnRClickStart = (int) s; };
 
@@ -70,6 +73,24 @@ namespace FortEZEdit
 
             numResetPostClickDelay.Value = Properties.Settings.Default.Delay_ResetPostClick;
             settingsSetterMap[numResetPostClickDelay] = (s) => { Properties.Settings.Default.Delay_ResetPostClick = (int)s; };
+
+            numPreReloadDelay.Value = Properties.Settings.Default.Delay_DPPreReload;
+            settingsSetterMap[numPreReloadDelay] = (s) => { Properties.Settings.Default.Delay_DPPreReload = (int)s; };
+
+            numPostReloadDelay.Value = Properties.Settings.Default.Delay_DPPostReload;
+            settingsSetterMap[numPostReloadDelay] = (s) => { Properties.Settings.Default.Delay_DPPostReload = (int)s; };
+
+            numPreSwitchDelay.Value = Properties.Settings.Default.Delay_DPPreSwitch;
+            settingsSetterMap[numPreSwitchDelay] = (s) => { Properties.Settings.Default.Delay_DPPreSwitch = (int)s; };
+
+            numPostSwitchDelay.Value = Properties.Settings.Default.Delay_DPPostSwitch;
+            settingsSetterMap[numPostSwitchDelay] = (s) => { Properties.Settings.Default.Delay_DPPostSwitch = (int)s; };
+
+            numAfterAll.Value = Properties.Settings.Default.Delay_DPAfter;
+            settingsSetterMap[numAfterAll] = (s) => { Properties.Settings.Default.Delay_DPAfter = (int)s; };
+
+            numMod2Delay.Value = Properties.Settings.Default.Delay_DPMod2Delay;
+            settingsSetterMap[numMod2Delay] = (s) => { Properties.Settings.Default.Delay_DPMod2Delay = (int)s; };
 
         }
 
@@ -128,6 +149,7 @@ namespace FortEZEdit
         private void changeDelayEvent(object sender, EventArgs e)
         {
             NumericUpDown changingUpDown = (NumericUpDown)sender;
+            Console.WriteLine(Convert.ToInt32(changingUpDown.Value));
             if (settingsSetterMap.ContainsKey(changingUpDown))
             {
                 settingsSetterMap[changingUpDown].Invoke(Convert.ToInt32(changingUpDown.Value));

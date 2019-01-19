@@ -118,5 +118,89 @@ namespace FortEZEdit.Properties {
                 this["Key_Pause"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("V")]
+        public string Key_DoublePump {
+            get {
+                return ((string)(this["Key_DoublePump"]));
+            }
+            set {
+                this["Key_DoublePump"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public int Delay_DPPreReload {
+            get {
+                return ((int)(this["Delay_DPPreReload"]));
+            }
+            set {
+                this["Delay_DPPreReload"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        public int Delay_DPPostReload {
+            get {
+                return ((int)(this["Delay_DPPostReload"]));
+            }
+            set {
+                this["Delay_DPPostReload"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        public int Delay_DPPostSwitch {
+            get {
+                return ((int)(this["Delay_DPPostSwitch"]));
+            }
+            set {
+                this["Delay_DPPostSwitch"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        public int Delay_DPPreSwitch {
+            get {
+                return ((int)(this["Delay_DPPreSwitch"]));
+            }
+            set {
+                this["Delay_DPPreSwitch"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("300")]
+        public int Delay_DPAfter {
+            get {
+                return ((int)(this["Delay_DPAfter"]));
+            }
+            set {
+                this["Delay_DPAfter"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("200")]
+        public int Delay_DPMod2Delay {
+            get {
+                return ((int)(this["Delay_DPMod2Delay"]));
+            }
+            set {
+                this["Delay_DPMod2Delay"] = value;
+            }
+        }
     }
 }

@@ -18,6 +18,7 @@ namespace FortEZEdit
         private readonly Input input;
         private readonly string interceptionInstallPath = "install-interception.exe";
         private readonly string interceptionInstallationSuccessNeedle = "successfully installed";
+        private Stopwatch stopwatch = new Stopwatch();
 
         private InterceptorFacade()
         {
@@ -42,6 +43,8 @@ namespace FortEZEdit
         private bool waitingForDnRUp;
         private bool isDnRDown;
         private bool paused;
+        private bool isDoublePumpDown;
+        private bool isDoublePumpDone;
         private void Input_OnKeyPressed(object sender, KeyPressedEventArgs e)
         {
             Properties.Settings defaultSettings = Properties.Settings.Default;
@@ -55,7 +58,56 @@ namespace FortEZEdit
                 return;
             }
 
-            if (ConvertToInterceptorKey(defaultSettings.Key_DnREdit) == e.Key)
+            if (ConvertToInterceptorKey(defaultSettings.Key_DoublePump) == e.Key)
+            {
+                if (e.State == KeyState.Down && !isDoublePumpDown)
+                {
+                    isDoublePumpDown = true;
+                    Task.Run(() =>
+                    {
+                        bool isFirstWeapon = true;
+                        isDoublePumpDone = false;
+                        int i = 1;
+                        do
+                        {
+                            input.SendMouseEvent(MouseState.LeftDown);
+                            Keys weaponKey = isFirstWeapon ? Keys.Three : Keys.Two;
+                            Thread.Sleep(defaultSettings.Delay_DPPreReload);
+                            input.SendKey(Keys.R, KeyState.Down);
+                            Thread.Sleep(defaultSettings.Delay_DPPreSwitch);
+                            input.SendKey(weaponKey, KeyState.Down);
+                            Thread.Sleep(defaultSettings.Delay_DPPostSwitch);
+                            input.SendKey(Keys.R, KeyState.Up);
+                            Thread.Sleep(defaultSettings.Delay_DPPostReload);
+                            input.SendKey(weaponKey, KeyState.Up);
+                            Thread.Sleep(defaultSettings.Delay_DPAfter);
+                            isDoublePumpDone = true;
+                            if (i % 2 == 0)
+                            {
+                                input.SendMouseEvent(MouseState.LeftUp);
+                                Thread.Sleep(defaultSettings.Delay_DPMod2Delay);
+                            }
+
+                            isFirstWeapon = !isFirstWeapon;
+                            i++;
+                        } while (isDoublePumpDown);
+                    });
+
+                }
+                else if (e.State == KeyState.Up)
+                {
+                    Task.Run(() => {
+                        while (!isDoublePumpDone)
+                        {
+                            // Spin wait
+                        }
+                        isDoublePumpDown = false;
+                        isDoublePumpDone = false;
+                        input.SendMouseEvent(MouseState.LeftUp);
+                    });
+                }
+            }
+            else if(ConvertToInterceptorKey(defaultSettings.Key_DnREdit) == e.Key)
             {
                 if (e.State == KeyState.Down && !waitingForDnRUp && !isDnRDown)
                 {

@@ -33,6 +33,15 @@
             this.lblInterceptionStatus = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.centerPanel = new System.Windows.Forms.Panel();
+            this.grpDoublePump = new System.Windows.Forms.GroupBox();
+            this.lblPostSwitchDelay = new System.Windows.Forms.Label();
+            this.numPostSwitchDelay = new System.Windows.Forms.NumericUpDown();
+            this.numPostReloadDelay = new System.Windows.Forms.NumericUpDown();
+            this.lblPostReloadDelay = new System.Windows.Forms.Label();
+            this.lblPreReloadDelay = new System.Windows.Forms.Label();
+            this.numPreReloadDelay = new System.Windows.Forms.NumericUpDown();
+            this.btnDoublePump = new System.Windows.Forms.Button();
+            this.lblDoublePump = new System.Windows.Forms.Label();
             this.grpReset = new System.Windows.Forms.GroupBox();
             this.numResetPostClickDelay = new System.Windows.Forms.NumericUpDown();
             this.lblResetPostClickDelay = new System.Windows.Forms.Label();
@@ -50,7 +59,17 @@
             this.grpFortniteKeys = new System.Windows.Forms.GroupBox();
             this.btnFnKeyEdit = new System.Windows.Forms.Button();
             this.lblEditKey = new System.Windows.Forms.Label();
+            this.lblPreSwitchDelay = new System.Windows.Forms.Label();
+            this.numPreSwitchDelay = new System.Windows.Forms.NumericUpDown();
+            this.lblAfterAll = new System.Windows.Forms.Label();
+            this.numAfterAll = new System.Windows.Forms.NumericUpDown();
+            this.lblMod2Delay = new System.Windows.Forms.Label();
+            this.numMod2Delay = new System.Windows.Forms.NumericUpDown();
             this.centerPanel.SuspendLayout();
+            this.grpDoublePump.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numPostSwitchDelay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numPostReloadDelay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numPreReloadDelay)).BeginInit();
             this.grpReset.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numResetPostClickDelay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numResetPreClickDelay)).BeginInit();
@@ -58,6 +77,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.numReleaseDelay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHoldDelay)).BeginInit();
             this.grpFortniteKeys.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numPreSwitchDelay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAfterAll)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numMod2Delay)).BeginInit();
             this.SuspendLayout();
             // 
             // btnInstallInterception
@@ -90,13 +112,121 @@
             // 
             // centerPanel
             // 
+            this.centerPanel.Controls.Add(this.grpDoublePump);
             this.centerPanel.Controls.Add(this.grpReset);
             this.centerPanel.Controls.Add(this.grpDnR);
             this.centerPanel.Controls.Add(this.grpFortniteKeys);
             this.centerPanel.Location = new System.Drawing.Point(-1, 42);
             this.centerPanel.Name = "centerPanel";
-            this.centerPanel.Size = new System.Drawing.Size(332, 240);
+            this.centerPanel.Size = new System.Drawing.Size(332, 370);
             this.centerPanel.TabIndex = 3;
+            // 
+            // grpDoublePump
+            // 
+            this.grpDoublePump.Controls.Add(this.lblMod2Delay);
+            this.grpDoublePump.Controls.Add(this.numMod2Delay);
+            this.grpDoublePump.Controls.Add(this.lblAfterAll);
+            this.grpDoublePump.Controls.Add(this.numAfterAll);
+            this.grpDoublePump.Controls.Add(this.lblPreSwitchDelay);
+            this.grpDoublePump.Controls.Add(this.numPreSwitchDelay);
+            this.grpDoublePump.Controls.Add(this.lblPostSwitchDelay);
+            this.grpDoublePump.Controls.Add(this.numPostSwitchDelay);
+            this.grpDoublePump.Controls.Add(this.numPostReloadDelay);
+            this.grpDoublePump.Controls.Add(this.lblPostReloadDelay);
+            this.grpDoublePump.Controls.Add(this.lblPreReloadDelay);
+            this.grpDoublePump.Controls.Add(this.numPreReloadDelay);
+            this.grpDoublePump.Controls.Add(this.btnDoublePump);
+            this.grpDoublePump.Controls.Add(this.lblDoublePump);
+            this.grpDoublePump.Location = new System.Drawing.Point(3, 241);
+            this.grpDoublePump.Name = "grpDoublePump";
+            this.grpDoublePump.Size = new System.Drawing.Size(326, 125);
+            this.grpDoublePump.TabIndex = 7;
+            this.grpDoublePump.TabStop = false;
+            this.grpDoublePump.Text = "Double pump";
+            // 
+            // lblPostSwitchDelay
+            // 
+            this.lblPostSwitchDelay.AutoSize = true;
+            this.lblPostSwitchDelay.Location = new System.Drawing.Point(165, 75);
+            this.lblPostSwitchDelay.Name = "lblPostSwitchDelay";
+            this.lblPostSwitchDelay.Size = new System.Drawing.Size(92, 13);
+            this.lblPostSwitchDelay.TabIndex = 7;
+            this.lblPostSwitchDelay.Text = "Post-switch delay:";
+            // 
+            // numPostSwitchDelay
+            // 
+            this.numPostSwitchDelay.Location = new System.Drawing.Point(257, 73);
+            this.numPostSwitchDelay.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numPostSwitchDelay.Name = "numPostSwitchDelay";
+            this.numPostSwitchDelay.Size = new System.Drawing.Size(64, 20);
+            this.numPostSwitchDelay.TabIndex = 6;
+            this.numPostSwitchDelay.ValueChanged += new System.EventHandler(this.changeDelayEvent);
+            // 
+            // numPostReloadDelay
+            // 
+            this.numPostReloadDelay.Location = new System.Drawing.Point(257, 49);
+            this.numPostReloadDelay.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numPostReloadDelay.Name = "numPostReloadDelay";
+            this.numPostReloadDelay.Size = new System.Drawing.Size(64, 20);
+            this.numPostReloadDelay.TabIndex = 5;
+            this.numPostReloadDelay.ValueChanged += new System.EventHandler(this.changeDelayEvent);
+            // 
+            // lblPostReloadDelay
+            // 
+            this.lblPostReloadDelay.AutoSize = true;
+            this.lblPostReloadDelay.Location = new System.Drawing.Point(165, 51);
+            this.lblPostReloadDelay.Name = "lblPostReloadDelay";
+            this.lblPostReloadDelay.Size = new System.Drawing.Size(91, 13);
+            this.lblPostReloadDelay.TabIndex = 4;
+            this.lblPostReloadDelay.Text = "Post-reload delay:";
+            // 
+            // lblPreReloadDelay
+            // 
+            this.lblPreReloadDelay.AutoSize = true;
+            this.lblPreReloadDelay.Location = new System.Drawing.Point(10, 51);
+            this.lblPreReloadDelay.Name = "lblPreReloadDelay";
+            this.lblPreReloadDelay.Size = new System.Drawing.Size(86, 13);
+            this.lblPreReloadDelay.TabIndex = 3;
+            this.lblPreReloadDelay.Text = "Pre-reload delay:";
+            // 
+            // numPreReloadDelay
+            // 
+            this.numPreReloadDelay.Location = new System.Drawing.Point(97, 49);
+            this.numPreReloadDelay.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numPreReloadDelay.Name = "numPreReloadDelay";
+            this.numPreReloadDelay.Size = new System.Drawing.Size(64, 20);
+            this.numPreReloadDelay.TabIndex = 2;
+            this.numPreReloadDelay.ValueChanged += new System.EventHandler(this.changeDelayEvent);
+            // 
+            // btnDoublePump
+            // 
+            this.btnDoublePump.Location = new System.Drawing.Point(62, 20);
+            this.btnDoublePump.Name = "btnDoublePump";
+            this.btnDoublePump.Size = new System.Drawing.Size(81, 23);
+            this.btnDoublePump.TabIndex = 1;
+            this.btnDoublePump.UseVisualStyleBackColor = true;
+            this.btnDoublePump.Click += new System.EventHandler(this.changeKeyEvent);
+            // 
+            // lblDoublePump
+            // 
+            this.lblDoublePump.AutoSize = true;
+            this.lblDoublePump.Location = new System.Drawing.Point(10, 25);
+            this.lblDoublePump.Name = "lblDoublePump";
+            this.lblDoublePump.Size = new System.Drawing.Size(28, 13);
+            this.lblDoublePump.TabIndex = 0;
+            this.lblDoublePump.Text = "Key:";
             // 
             // grpReset
             // 
@@ -115,7 +245,7 @@
             // 
             // numResetPostClickDelay
             // 
-            this.numResetPostClickDelay.Location = new System.Drawing.Point(255, 49);
+            this.numResetPostClickDelay.Location = new System.Drawing.Point(257, 49);
             this.numResetPostClickDelay.Maximum = new decimal(new int[] {
             200,
             0,
@@ -146,7 +276,7 @@
             // 
             // numResetPreClickDelay
             // 
-            this.numResetPreClickDelay.Location = new System.Drawing.Point(95, 49);
+            this.numResetPreClickDelay.Location = new System.Drawing.Point(97, 49);
             this.numResetPreClickDelay.Maximum = new decimal(new int[] {
             200,
             0,
@@ -192,7 +322,7 @@
             // 
             // numReleaseDelay
             // 
-            this.numReleaseDelay.Location = new System.Drawing.Point(255, 49);
+            this.numReleaseDelay.Location = new System.Drawing.Point(257, 49);
             this.numReleaseDelay.Maximum = new decimal(new int[] {
             200,
             0,
@@ -223,7 +353,7 @@
             // 
             // numHoldDelay
             // 
-            this.numHoldDelay.Location = new System.Drawing.Point(95, 49);
+            this.numHoldDelay.Location = new System.Drawing.Point(97, 49);
             this.numHoldDelay.Maximum = new decimal(new int[] {
             200,
             0,
@@ -281,11 +411,77 @@
             this.lblEditKey.TabIndex = 0;
             this.lblEditKey.Text = "Edit Key:";
             // 
+            // lblPreSwitchDelay
+            // 
+            this.lblPreSwitchDelay.AutoSize = true;
+            this.lblPreSwitchDelay.Location = new System.Drawing.Point(10, 75);
+            this.lblPreSwitchDelay.Name = "lblPreSwitchDelay";
+            this.lblPreSwitchDelay.Size = new System.Drawing.Size(87, 13);
+            this.lblPreSwitchDelay.TabIndex = 9;
+            this.lblPreSwitchDelay.Text = "Pre-switch delay:";
+            // 
+            // numPreSwitchDelay
+            // 
+            this.numPreSwitchDelay.Location = new System.Drawing.Point(97, 73);
+            this.numPreSwitchDelay.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numPreSwitchDelay.Name = "numPreSwitchDelay";
+            this.numPreSwitchDelay.Size = new System.Drawing.Size(64, 20);
+            this.numPreSwitchDelay.TabIndex = 8;
+            this.numPreSwitchDelay.ValueChanged += new System.EventHandler(this.changeDelayEvent);
+            // 
+            // lblAfterAll
+            // 
+            this.lblAfterAll.AutoSize = true;
+            this.lblAfterAll.Location = new System.Drawing.Point(10, 101);
+            this.lblAfterAll.Name = "lblAfterAll";
+            this.lblAfterAll.Size = new System.Drawing.Size(45, 13);
+            this.lblAfterAll.TabIndex = 11;
+            this.lblAfterAll.Text = "After all:";
+            // 
+            // numAfterAll
+            // 
+            this.numAfterAll.Location = new System.Drawing.Point(97, 99);
+            this.numAfterAll.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numAfterAll.Name = "numAfterAll";
+            this.numAfterAll.Size = new System.Drawing.Size(64, 20);
+            this.numAfterAll.TabIndex = 10;
+            this.numAfterAll.ValueChanged += new System.EventHandler(this.changeDelayEvent);
+            // 
+            // lblMod2Delay
+            // 
+            this.lblMod2Delay.AutoSize = true;
+            this.lblMod2Delay.Location = new System.Drawing.Point(165, 101);
+            this.lblMod2Delay.Name = "lblMod2Delay";
+            this.lblMod2Delay.Size = new System.Drawing.Size(68, 13);
+            this.lblMod2Delay.TabIndex = 13;
+            this.lblMod2Delay.Text = "Mod 2 delay:";
+            // 
+            // numMod2Delay
+            // 
+            this.numMod2Delay.Location = new System.Drawing.Point(257, 99);
+            this.numMod2Delay.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numMod2Delay.Name = "numMod2Delay";
+            this.numMod2Delay.Size = new System.Drawing.Size(64, 20);
+            this.numMod2Delay.TabIndex = 12;
+            this.numMod2Delay.ValueChanged += new System.EventHandler(this.changeDelayEvent);
+            // 
             // FortEZEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(331, 283);
+            this.ClientSize = new System.Drawing.Size(331, 410);
             this.Controls.Add(this.centerPanel);
             this.Controls.Add(this.lblInterceptionStatus);
             this.Controls.Add(this.btnInstallInterception);
@@ -300,6 +496,11 @@
             this.Load += new System.EventHandler(this.FortEZEditForm_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FortEZEditForm_KeyPress);
             this.centerPanel.ResumeLayout(false);
+            this.grpDoublePump.ResumeLayout(false);
+            this.grpDoublePump.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numPostSwitchDelay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numPostReloadDelay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numPreReloadDelay)).EndInit();
             this.grpReset.ResumeLayout(false);
             this.grpReset.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numResetPostClickDelay)).EndInit();
@@ -310,6 +511,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.numHoldDelay)).EndInit();
             this.grpFortniteKeys.ResumeLayout(false);
             this.grpFortniteKeys.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numPreSwitchDelay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAfterAll)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numMod2Delay)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -338,6 +542,21 @@
         private System.Windows.Forms.NumericUpDown numResetPreClickDelay;
         private System.Windows.Forms.Button btnKeyReset;
         private System.Windows.Forms.Label lblKeyReset;
+        private System.Windows.Forms.GroupBox grpDoublePump;
+        private System.Windows.Forms.NumericUpDown numPostReloadDelay;
+        private System.Windows.Forms.Label lblPostReloadDelay;
+        private System.Windows.Forms.Label lblPreReloadDelay;
+        private System.Windows.Forms.NumericUpDown numPreReloadDelay;
+        private System.Windows.Forms.Button btnDoublePump;
+        private System.Windows.Forms.Label lblDoublePump;
+        private System.Windows.Forms.Label lblPostSwitchDelay;
+        private System.Windows.Forms.NumericUpDown numPostSwitchDelay;
+        private System.Windows.Forms.Label lblPreSwitchDelay;
+        private System.Windows.Forms.NumericUpDown numPreSwitchDelay;
+        private System.Windows.Forms.Label lblAfterAll;
+        private System.Windows.Forms.NumericUpDown numAfterAll;
+        private System.Windows.Forms.Label lblMod2Delay;
+        private System.Windows.Forms.NumericUpDown numMod2Delay;
     }
 }
 

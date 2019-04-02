@@ -29,7 +29,7 @@ If a Drag-n-Release method would be implemented in the Fortnite client, this nee
 I do not (yet) know the stance of Epic Games towards using this tool, therefore I do _not_ use and also do _not_ recommend using this in Fortnite BR.
 
 ## Demo
-The following was done using two buttons on my mouse
+I am by no means a pro player and the following was done using two buttons on my mouse with little practice.
 <p align="center">
   <a href="https://streamable.com/17llk">
     <img src="https://i.gyazo.com/f60329e1d89bc43fd5fb14594343d125.jpg" width="250">

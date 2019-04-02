@@ -38,6 +38,11 @@ I am by no means a pro player and the following was done using two buttons on my
 
 If you want to know more about my settings: I have a Logitech G502 and use the left thumb button (by default the DPI switch button) for Drag-n-Release key and mouse wheel to the left for build reset.
 
+## Credits
+Credits go to:
+- [Interception](https://github.com/oblitum/Interception) for providing the library for key bindings.
+- [Interceptor](https://github.com/jasonpang/Interceptor) for providing a C# wrapper for Interception.
+
 ## Disclaimer
 I am not responsible for anything that happens to the device running the software on this repository.
 I do not know the stance of Epic Games towards using a tool such as the one found in this repository.

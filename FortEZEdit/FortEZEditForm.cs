@@ -131,7 +131,7 @@ namespace FortEZEdit
             Properties.Settings.Default.Save();
         }
 
-        private void changeDelayEvent(object sender, EventArgs e)
+        private void changeNumEvent(object sender, EventArgs e)
         {
             NumericUpDown changingUpDown = (NumericUpDown)sender;
             if (settingsSetterMap.ContainsKey(changingUpDown))

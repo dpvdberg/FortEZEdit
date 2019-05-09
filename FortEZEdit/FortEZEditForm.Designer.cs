@@ -119,7 +119,7 @@
             0,
             0,
             0});
-            this.numMouseId.ValueChanged += new System.EventHandler(this.changeDelayEvent);
+            this.numMouseId.ValueChanged += new System.EventHandler(this.changeNumEvent);
             // 
             // lblMouseId
             // 
@@ -156,7 +156,7 @@
             this.numResetPostClickDelay.Name = "numResetPostClickDelay";
             this.numResetPostClickDelay.Size = new System.Drawing.Size(64, 20);
             this.numResetPostClickDelay.TabIndex = 5;
-            this.numResetPostClickDelay.ValueChanged += new System.EventHandler(this.changeDelayEvent);
+            this.numResetPostClickDelay.ValueChanged += new System.EventHandler(this.changeNumEvent);
             // 
             // lblResetPostClickDelay
             // 
@@ -187,7 +187,7 @@
             this.numResetPreClickDelay.Name = "numResetPreClickDelay";
             this.numResetPreClickDelay.Size = new System.Drawing.Size(64, 20);
             this.numResetPreClickDelay.TabIndex = 2;
-            this.numResetPreClickDelay.ValueChanged += new System.EventHandler(this.changeDelayEvent);
+            this.numResetPreClickDelay.ValueChanged += new System.EventHandler(this.changeNumEvent);
             // 
             // btnKeyReset
             // 
@@ -233,7 +233,7 @@
             this.numReleaseDelay.Name = "numReleaseDelay";
             this.numReleaseDelay.Size = new System.Drawing.Size(64, 20);
             this.numReleaseDelay.TabIndex = 5;
-            this.numReleaseDelay.ValueChanged += new System.EventHandler(this.changeDelayEvent);
+            this.numReleaseDelay.ValueChanged += new System.EventHandler(this.changeNumEvent);
             // 
             // lblReleaseDelay
             // 
@@ -264,7 +264,7 @@
             this.numHoldDelay.Name = "numHoldDelay";
             this.numHoldDelay.Size = new System.Drawing.Size(64, 20);
             this.numHoldDelay.TabIndex = 2;
-            this.numHoldDelay.ValueChanged += new System.EventHandler(this.changeDelayEvent);
+            this.numHoldDelay.ValueChanged += new System.EventHandler(this.changeNumEvent);
             // 
             // btnKeyDnR
             // 
@@ -302,7 +302,7 @@
             this.btnFnKeyEdit.Size = new System.Drawing.Size(81, 23);
             this.btnFnKeyEdit.TabIndex = 1;
             this.btnFnKeyEdit.UseVisualStyleBackColor = true;
-            this.btnFnKeyEdit.Click += new System.EventHandler(this.changeDelayEvent);
+            this.btnFnKeyEdit.Click += new System.EventHandler(this.changeKeyEvent);
             // 
             // lblEditKey
             // 

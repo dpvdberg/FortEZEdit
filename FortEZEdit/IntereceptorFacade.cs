@@ -3,9 +3,12 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Management;
+using System.Runtime.InteropServices;
 using System.Security.Principal;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 
 namespace FortEZEdit
 {
@@ -37,6 +40,32 @@ namespace FortEZEdit
             }
 
             input.OnKeyPressed += Input_OnKeyPressed;
+
+            System.Timers.Timer activeProcessTimer = new System.Timers.Timer();
+            activeProcessTimer.Elapsed += ActiveProcessTimer_Elapsed;
+            activeProcessTimer.Interval = 500;
+            activeProcessTimer.Enabled = true;
+            activeProcessTimer.Start();
+        }
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        static extern IntPtr GetForegroundWindow();
+        [DllImport("user32.dll", SetLastError = true)]
+        static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint lpdwProcessId);
+
+        private string GetCaptionOfActiveWindow()
+        {
+            IntPtr handle = GetForegroundWindow();
+            uint processId;
+            GetWindowThreadProcessId(handle, out processId);
+
+            return Process.GetProcessById((int) processId).ProcessName;
+        }
+
+        private bool isFortniteActive = false;
+        private void ActiveProcessTimer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            isFortniteActive = GetCaptionOfActiveWindow().ToLower().Contains("fortnite");
         }
 
         private bool waitingForDnRUp;
@@ -50,7 +79,7 @@ namespace FortEZEdit
                 paused = !paused;
             }
 
-            if (paused)
+            if (paused || !isFortniteActive)
             {
                 return;
             }
@@ -150,6 +179,11 @@ namespace FortEZEdit
             {
                 throw new InterceptionException($"Could not determine whether installation was successful.\nOutput:\n\n {output}");
             }
+        }
+
+        public void SetMouseId(int id)
+        {
+            input.setMouseId(id);
         }
     }
 }

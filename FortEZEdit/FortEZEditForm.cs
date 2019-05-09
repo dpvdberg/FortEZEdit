@@ -135,5 +135,10 @@ namespace FortEZEdit
             }
             changingUpDown = null;
         }
+
+        private void numMouseId_ValueChanged(object sender, EventArgs e)
+        {
+            InterceptorFacade.Instance.SetMouseId(Convert.ToInt32(numMouseId.Value));
+        }
     }
 }

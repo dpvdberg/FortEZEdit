@@ -118,5 +118,17 @@ namespace FortEZEdit.Properties {
                 this["Key_Pause"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int id_Mouse {
+            get {
+                return ((int)(this["id_Mouse"]));
+            }
+            set {
+                this["id_Mouse"] = value;
+            }
+        }
     }
 }

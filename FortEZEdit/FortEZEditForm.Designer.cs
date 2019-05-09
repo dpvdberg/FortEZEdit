@@ -33,6 +33,8 @@
             this.lblInterceptionStatus = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.centerPanel = new System.Windows.Forms.Panel();
+            this.numMouseId = new System.Windows.Forms.NumericUpDown();
+            this.lblMouseId = new System.Windows.Forms.Label();
             this.grpReset = new System.Windows.Forms.GroupBox();
             this.numResetPostClickDelay = new System.Windows.Forms.NumericUpDown();
             this.lblResetPostClickDelay = new System.Windows.Forms.Label();
@@ -50,9 +52,8 @@
             this.grpFortniteKeys = new System.Windows.Forms.GroupBox();
             this.btnFnKeyEdit = new System.Windows.Forms.Button();
             this.lblEditKey = new System.Windows.Forms.Label();
-            this.lblMouseId = new System.Windows.Forms.Label();
-            this.numMouseId = new System.Windows.Forms.NumericUpDown();
             this.centerPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numMouseId)).BeginInit();
             this.grpReset.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numResetPostClickDelay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numResetPreClickDelay)).BeginInit();
@@ -60,7 +61,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numReleaseDelay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHoldDelay)).BeginInit();
             this.grpFortniteKeys.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numMouseId)).BeginInit();
             this.SuspendLayout();
             // 
             // btnInstallInterception
@@ -102,6 +102,33 @@
             this.centerPanel.Name = "centerPanel";
             this.centerPanel.Size = new System.Drawing.Size(332, 264);
             this.centerPanel.TabIndex = 3;
+            // 
+            // numMouseId
+            // 
+            this.numMouseId.Location = new System.Drawing.Point(65, 10);
+            this.numMouseId.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numMouseId.Name = "numMouseId";
+            this.numMouseId.Size = new System.Drawing.Size(81, 20);
+            this.numMouseId.TabIndex = 8;
+            this.numMouseId.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numMouseId.ValueChanged += new System.EventHandler(this.changeDelayEvent);
+            // 
+            // lblMouseId
+            // 
+            this.lblMouseId.AutoSize = true;
+            this.lblMouseId.Location = new System.Drawing.Point(10, 12);
+            this.lblMouseId.Name = "lblMouseId";
+            this.lblMouseId.Size = new System.Drawing.Size(56, 13);
+            this.lblMouseId.TabIndex = 7;
+            this.lblMouseId.Text = "Mouse ID:";
             // 
             // grpReset
             // 
@@ -275,7 +302,7 @@
             this.btnFnKeyEdit.Size = new System.Drawing.Size(81, 23);
             this.btnFnKeyEdit.TabIndex = 1;
             this.btnFnKeyEdit.UseVisualStyleBackColor = true;
-            this.btnFnKeyEdit.Click += new System.EventHandler(this.changeKeyEvent);
+            this.btnFnKeyEdit.Click += new System.EventHandler(this.changeDelayEvent);
             // 
             // lblEditKey
             // 
@@ -285,33 +312,6 @@
             this.lblEditKey.Size = new System.Drawing.Size(49, 13);
             this.lblEditKey.TabIndex = 0;
             this.lblEditKey.Text = "Edit Key:";
-            // 
-            // lblMouseId
-            // 
-            this.lblMouseId.AutoSize = true;
-            this.lblMouseId.Location = new System.Drawing.Point(10, 12);
-            this.lblMouseId.Name = "lblMouseId";
-            this.lblMouseId.Size = new System.Drawing.Size(56, 13);
-            this.lblMouseId.TabIndex = 7;
-            this.lblMouseId.Text = "Mouse ID:";
-            // 
-            // numMouseId
-            // 
-            this.numMouseId.Location = new System.Drawing.Point(65, 10);
-            this.numMouseId.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numMouseId.Name = "numMouseId";
-            this.numMouseId.Size = new System.Drawing.Size(81, 20);
-            this.numMouseId.TabIndex = 8;
-            this.numMouseId.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numMouseId.ValueChanged += new System.EventHandler(this.numMouseId_ValueChanged);
             // 
             // FortEZEditForm
             // 
@@ -333,6 +333,7 @@
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FortEZEditForm_KeyPress);
             this.centerPanel.ResumeLayout(false);
             this.centerPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numMouseId)).EndInit();
             this.grpReset.ResumeLayout(false);
             this.grpReset.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numResetPostClickDelay)).EndInit();
@@ -343,7 +344,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numHoldDelay)).EndInit();
             this.grpFortniteKeys.ResumeLayout(false);
             this.grpFortniteKeys.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numMouseId)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

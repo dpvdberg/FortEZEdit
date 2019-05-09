@@ -26,5 +26,8 @@
     <Setting Name="Key_Pause" Type="System.String" Scope="User">
       <Value Profile="(Default)">F10</Value>
     </Setting>
+    <Setting Name="id_Mouse" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

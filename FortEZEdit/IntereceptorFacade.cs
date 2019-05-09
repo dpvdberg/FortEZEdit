@@ -25,6 +25,7 @@ namespace FortEZEdit
         private InterceptorFacade()
         {
             input = new Input();
+            input.setMouseId(Properties.Settings.Default.id_Mouse);
         }
 
         public void Load()

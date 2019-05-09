@@ -71,6 +71,12 @@ namespace FortEZEdit
             numResetPostClickDelay.Value = Properties.Settings.Default.Delay_ResetPostClick;
             settingsSetterMap[numResetPostClickDelay] = (s) => { Properties.Settings.Default.Delay_ResetPostClick = (int)s; };
 
+            numMouseId.Value = Properties.Settings.Default.id_Mouse;
+            settingsSetterMap[numMouseId] = (s) => {
+                int value = (int)s;
+                Properties.Settings.Default.id_Mouse = value;
+                InterceptorFacade.Instance.SetMouseId(value);
+            };
         }
 
         private void SetInterceptionStatusError(string message)
@@ -134,11 +140,6 @@ namespace FortEZEdit
                 LoadSettings();
             }
             changingUpDown = null;
-        }
-
-        private void numMouseId_ValueChanged(object sender, EventArgs e)
-        {
-            InterceptorFacade.Instance.SetMouseId(Convert.ToInt32(numMouseId.Value));
         }
     }
 }

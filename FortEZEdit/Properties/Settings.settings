@@ -6,7 +6,7 @@
       <Value Profile="(Default)">E</Value>
     </Setting>
     <Setting Name="Key_DnREdit" Type="Interceptor.Keys" Scope="User">
-      <Value Profile="(Default)">V</Value>
+      <Value Profile="(Default)">T</Value>
     </Setting>
     <Setting Name="Delay_DnRClickStart" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">10</Value>

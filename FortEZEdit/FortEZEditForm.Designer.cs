@@ -55,12 +55,12 @@
             this.btnKeyDnR = new System.Windows.Forms.Button();
             this.lblKeyDnR = new System.Windows.Forms.Label();
             this.grpFortniteKeys = new System.Windows.Forms.GroupBox();
+            this.btnFnKeyShotgun = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             this.btnFnKeyRamp = new System.Windows.Forms.Button();
             this.btnFnKeyEdit = new System.Windows.Forms.Button();
             this.lblEditKey = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnFnKeyShotgun = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
             this.centerPanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numEditRampPlaceReleaseDelay)).BeginInit();
@@ -364,6 +364,24 @@
             this.grpFortniteKeys.TabStop = false;
             this.grpFortniteKeys.Text = "Fortnite Keys";
             // 
+            // btnFnKeyShotgun
+            // 
+            this.btnFnKeyShotgun.Location = new System.Drawing.Point(78, 57);
+            this.btnFnKeyShotgun.Name = "btnFnKeyShotgun";
+            this.btnFnKeyShotgun.Size = new System.Drawing.Size(81, 23);
+            this.btnFnKeyShotgun.TabIndex = 3;
+            this.btnFnKeyShotgun.UseVisualStyleBackColor = true;
+            this.btnFnKeyShotgun.Click += new System.EventHandler(this.changeKeyEvent);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 62);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(70, 13);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Shotgun key:";
+            // 
             // btnFnKeyRamp
             // 
             this.btnFnKeyRamp.Location = new System.Drawing.Point(219, 19);
@@ -399,23 +417,6 @@
             this.label2.Size = new System.Drawing.Size(58, 13);
             this.label2.TabIndex = 0;
             this.label2.Text = "Ramp key:";
-            // 
-            // btnFnKeyShotgun
-            // 
-            this.btnFnKeyShotgun.Location = new System.Drawing.Point(78, 57);
-            this.btnFnKeyShotgun.Name = "btnFnKeyShotgun";
-            this.btnFnKeyShotgun.Size = new System.Drawing.Size(81, 23);
-            this.btnFnKeyShotgun.TabIndex = 3;
-            this.btnFnKeyShotgun.UseVisualStyleBackColor = true;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 62);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(70, 13);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Shotgun key:";
             // 
             // FortEZEditForm
             // 

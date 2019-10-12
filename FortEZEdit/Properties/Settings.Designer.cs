@@ -37,7 +37,7 @@ namespace FortEZEdit.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("V")]
+        [global::System.Configuration.DefaultSettingValueAttribute("T")]
         public global::Interceptor.Keys Key_DnREdit {
             get {
                 return ((global::Interceptor.Keys)(this["Key_DnREdit"]));

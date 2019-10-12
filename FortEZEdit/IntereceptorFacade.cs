@@ -165,14 +165,6 @@ namespace FortEZEdit
             }
         }
 
-        public Keys ConvertToInterceptorKey(string key)
-        {
-            Keys outKey;
-            Enum.TryParse(key, out outKey);
-
-            return outKey;
-        }
-
         public bool IsDriverInstalled()
         {
             SelectQuery query = new SelectQuery("Win32_SystemDriver");

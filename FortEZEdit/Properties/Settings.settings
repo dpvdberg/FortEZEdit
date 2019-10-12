@@ -2,32 +2,44 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FortEZEdit.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="FnKey_Edit" Type="System.String" Scope="User">
+    <Setting Name="FnKey_Edit" Type="Interceptor.Keys" Scope="User">
       <Value Profile="(Default)">E</Value>
     </Setting>
-    <Setting Name="Key_DnREdit" Type="System.String" Scope="User">
-      <Value Profile="(Default)">T</Value>
+    <Setting Name="Key_DnREdit" Type="Interceptor.Keys" Scope="User">
+      <Value Profile="(Default)">V</Value>
     </Setting>
     <Setting Name="Delay_DnRClickStart" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">70</Value>
+      <Value Profile="(Default)">10</Value>
     </Setting>
     <Setting Name="Delay_DnrClickRelease" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">10</Value>
     </Setting>
-    <Setting Name="Key_Reset" Type="System.String" Scope="User">
+    <Setting Name="Key_Reset" Type="Interceptor.Keys" Scope="User">
       <Value Profile="(Default)">Y</Value>
     </Setting>
     <Setting Name="Delay_ResetPreClick" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">80</Value>
+      <Value Profile="(Default)">10</Value>
     </Setting>
     <Setting Name="Delay_ResetPostClick" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">20</Value>
+      <Value Profile="(Default)">10</Value>
     </Setting>
-    <Setting Name="Key_Pause" Type="System.String" Scope="User">
+    <Setting Name="Key_Pause" Type="Interceptor.Keys" Scope="User">
       <Value Profile="(Default)">F10</Value>
     </Setting>
     <Setting Name="id_Mouse" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="Key_EditRampPlaceModifier" Type="Interceptor.Keys" Scope="User">
+      <Value Profile="(Default)">Control</Value>
+    </Setting>
+    <Setting Name="FnKey_Ramp" Type="Interceptor.Keys" Scope="User">
+      <Value Profile="(Default)">C</Value>
+    </Setting>
+    <Setting Name="Delay_ReleaseEditRampPlaceDelay" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">80</Value>
+    </Setting>
+    <Setting Name="FnKey_Shotgun" Type="Interceptor.Keys" Scope="User">
+      <Value Profile="(Default)">Two</Value>
     </Setting>
   </Settings>
 </SettingsFile>

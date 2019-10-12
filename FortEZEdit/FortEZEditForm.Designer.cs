@@ -33,6 +33,11 @@
             this.lblInterceptionStatus = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.centerPanel = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.numEditRampPlaceReleaseDelay = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnEditRampPlaceModifier = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.numMouseId = new System.Windows.Forms.NumericUpDown();
             this.lblMouseId = new System.Windows.Forms.Label();
             this.grpReset = new System.Windows.Forms.GroupBox();
@@ -50,9 +55,15 @@
             this.btnKeyDnR = new System.Windows.Forms.Button();
             this.lblKeyDnR = new System.Windows.Forms.Label();
             this.grpFortniteKeys = new System.Windows.Forms.GroupBox();
+            this.btnFnKeyRamp = new System.Windows.Forms.Button();
             this.btnFnKeyEdit = new System.Windows.Forms.Button();
             this.lblEditKey = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnFnKeyShotgun = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             this.centerPanel.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numEditRampPlaceReleaseDelay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMouseId)).BeginInit();
             this.grpReset.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numResetPostClickDelay)).BeginInit();
@@ -93,6 +104,7 @@
             // 
             // centerPanel
             // 
+            this.centerPanel.Controls.Add(this.groupBox1);
             this.centerPanel.Controls.Add(this.numMouseId);
             this.centerPanel.Controls.Add(this.lblMouseId);
             this.centerPanel.Controls.Add(this.grpReset);
@@ -100,8 +112,61 @@
             this.centerPanel.Controls.Add(this.grpFortniteKeys);
             this.centerPanel.Location = new System.Drawing.Point(-1, 42);
             this.centerPanel.Name = "centerPanel";
-            this.centerPanel.Size = new System.Drawing.Size(332, 264);
+            this.centerPanel.Size = new System.Drawing.Size(332, 375);
             this.centerPanel.TabIndex = 3;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.numEditRampPlaceReleaseDelay);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.btnEditRampPlaceModifier);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Location = new System.Drawing.Point(3, 313);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(326, 58);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Edit ramp place";
+            // 
+            // numEditRampPlaceReleaseDelay
+            // 
+            this.numEditRampPlaceReleaseDelay.Location = new System.Drawing.Point(255, 23);
+            this.numEditRampPlaceReleaseDelay.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.numEditRampPlaceReleaseDelay.Name = "numEditRampPlaceReleaseDelay";
+            this.numEditRampPlaceReleaseDelay.Size = new System.Drawing.Size(64, 20);
+            this.numEditRampPlaceReleaseDelay.TabIndex = 7;
+            this.numEditRampPlaceReleaseDelay.ValueChanged += new System.EventHandler(this.changeNumEvent);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(165, 25);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Release delay:";
+            // 
+            // btnEditRampPlaceModifier
+            // 
+            this.btnEditRampPlaceModifier.Location = new System.Drawing.Point(83, 20);
+            this.btnEditRampPlaceModifier.Name = "btnEditRampPlaceModifier";
+            this.btnEditRampPlaceModifier.Size = new System.Drawing.Size(76, 23);
+            this.btnEditRampPlaceModifier.TabIndex = 1;
+            this.btnEditRampPlaceModifier.UseVisualStyleBackColor = true;
+            this.btnEditRampPlaceModifier.Click += new System.EventHandler(this.changeKeyEvent);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(10, 25);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(67, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Edit modifier:";
             // 
             // numMouseId
             // 
@@ -138,7 +203,7 @@
             this.grpReset.Controls.Add(this.numResetPreClickDelay);
             this.grpReset.Controls.Add(this.btnKeyReset);
             this.grpReset.Controls.Add(this.lblKeyReset);
-            this.grpReset.Location = new System.Drawing.Point(3, 186);
+            this.grpReset.Location = new System.Drawing.Point(3, 225);
             this.grpReset.Name = "grpReset";
             this.grpReset.Size = new System.Drawing.Size(326, 82);
             this.grpReset.TabIndex = 6;
@@ -215,7 +280,7 @@
             this.grpDnR.Controls.Add(this.numHoldDelay);
             this.grpDnR.Controls.Add(this.btnKeyDnR);
             this.grpDnR.Controls.Add(this.lblKeyDnR);
-            this.grpDnR.Location = new System.Drawing.Point(3, 98);
+            this.grpDnR.Location = new System.Drawing.Point(3, 137);
             this.grpDnR.Name = "grpDnR";
             this.grpDnR.Size = new System.Drawing.Size(326, 82);
             this.grpDnR.TabIndex = 1;
@@ -286,14 +351,27 @@
             // 
             // grpFortniteKeys
             // 
+            this.grpFortniteKeys.Controls.Add(this.btnFnKeyShotgun);
+            this.grpFortniteKeys.Controls.Add(this.label5);
+            this.grpFortniteKeys.Controls.Add(this.btnFnKeyRamp);
             this.grpFortniteKeys.Controls.Add(this.btnFnKeyEdit);
             this.grpFortniteKeys.Controls.Add(this.lblEditKey);
+            this.grpFortniteKeys.Controls.Add(this.label2);
             this.grpFortniteKeys.Location = new System.Drawing.Point(3, 36);
             this.grpFortniteKeys.Name = "grpFortniteKeys";
-            this.grpFortniteKeys.Size = new System.Drawing.Size(326, 56);
+            this.grpFortniteKeys.Size = new System.Drawing.Size(326, 95);
             this.grpFortniteKeys.TabIndex = 0;
             this.grpFortniteKeys.TabStop = false;
             this.grpFortniteKeys.Text = "Fortnite Keys";
+            // 
+            // btnFnKeyRamp
+            // 
+            this.btnFnKeyRamp.Location = new System.Drawing.Point(219, 19);
+            this.btnFnKeyRamp.Name = "btnFnKeyRamp";
+            this.btnFnKeyRamp.Size = new System.Drawing.Size(76, 23);
+            this.btnFnKeyRamp.TabIndex = 1;
+            this.btnFnKeyRamp.UseVisualStyleBackColor = true;
+            this.btnFnKeyRamp.Click += new System.EventHandler(this.changeKeyEvent);
             // 
             // btnFnKeyEdit
             // 
@@ -309,15 +387,41 @@
             this.lblEditKey.AutoSize = true;
             this.lblEditKey.Location = new System.Drawing.Point(6, 24);
             this.lblEditKey.Name = "lblEditKey";
-            this.lblEditKey.Size = new System.Drawing.Size(49, 13);
+            this.lblEditKey.Size = new System.Drawing.Size(48, 13);
             this.lblEditKey.TabIndex = 0;
-            this.lblEditKey.Text = "Edit Key:";
+            this.lblEditKey.Text = "Edit key:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(155, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(58, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Ramp key:";
+            // 
+            // btnFnKeyShotgun
+            // 
+            this.btnFnKeyShotgun.Location = new System.Drawing.Point(78, 57);
+            this.btnFnKeyShotgun.Name = "btnFnKeyShotgun";
+            this.btnFnKeyShotgun.Size = new System.Drawing.Size(81, 23);
+            this.btnFnKeyShotgun.TabIndex = 3;
+            this.btnFnKeyShotgun.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 62);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(70, 13);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Shotgun key:";
             // 
             // FortEZEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(332, 315);
+            this.ClientSize = new System.Drawing.Size(332, 420);
             this.Controls.Add(this.centerPanel);
             this.Controls.Add(this.lblInterceptionStatus);
             this.Controls.Add(this.btnInstallInterception);
@@ -330,9 +434,11 @@
             this.Text = "Fortnite EZ Edit";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FortEZEditForm_FormClosing);
             this.Load += new System.EventHandler(this.FortEZEditForm_Load);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FortEZEditForm_KeyPress);
             this.centerPanel.ResumeLayout(false);
             this.centerPanel.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numEditRampPlaceReleaseDelay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMouseId)).EndInit();
             this.grpReset.ResumeLayout(false);
             this.grpReset.PerformLayout();
@@ -374,6 +480,15 @@
         private System.Windows.Forms.Label lblKeyReset;
         private System.Windows.Forms.NumericUpDown numMouseId;
         private System.Windows.Forms.Label lblMouseId;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnFnKeyRamp;
+        private System.Windows.Forms.Button btnEditRampPlaceModifier;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.NumericUpDown numEditRampPlaceReleaseDelay;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnFnKeyShotgun;
+        private System.Windows.Forms.Label label5;
     }
 }
 

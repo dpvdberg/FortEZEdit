@@ -1,7 +1,9 @@
 ﻿using Interceptor;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Management;
 using System.Runtime.InteropServices;
 using System.Security.Principal;
@@ -21,11 +23,28 @@ namespace FortEZEdit
         private readonly Input input;
         private readonly string interceptionInstallPath = "install-interception.exe";
         private readonly string interceptionInstallationSuccessNeedle = "successfully installed";
+        private bool isBroadcastingKeys = true;
+        private List<InterceptionListener> listeners = new List<InterceptionListener>();
 
         private InterceptorFacade()
         {
             input = new Input();
             input.setMouseId(Properties.Settings.Default.id_Mouse);
+        }
+
+        public void addListener(InterceptionListener listener)
+        {
+            listeners.Add(listener);
+        }
+
+        public void removeListener(InterceptionListener listener)
+        {
+            listeners.Remove(listener);
+        }
+
+        public void setBroadcasting(bool enable)
+        {
+            isBroadcastingKeys = enable;
         }
 
         public void Load()
@@ -72,10 +91,20 @@ namespace FortEZEdit
         private bool waitingForDnRUp;
         private bool isDnRDown;
         private bool paused;
+        private bool isEditRampPlaceModifierDown;
+        private bool triggeredEditRampPlace;
         private void Input_OnKeyPressed(object sender, KeyPressedEventArgs e)
         {
+            if (isBroadcastingKeys && e.State == KeyState.Down)
+            {
+                foreach (InterceptionListener listener in listeners)
+                {
+                    listener.OnKeyDown(e.Key);
+                }
+            }
+
             Properties.Settings defaultSettings = Properties.Settings.Default;
-            if (ConvertToInterceptorKey(defaultSettings.Key_Pause) == e.Key && e.State == KeyState.Down)
+            if (defaultSettings.Key_Pause == e.Key && e.State == KeyState.Down)
             {
                 paused = !paused;
             }
@@ -85,13 +114,17 @@ namespace FortEZEdit
                 return;
             }
 
-            if (ConvertToInterceptorKey(defaultSettings.Key_DnREdit) == e.Key)
+            if (defaultSettings.Key_EditRampPlaceModifier == e.Key)
+            {
+                isEditRampPlaceModifierDown = e.State == KeyState.Down;
+            } else if (defaultSettings.Key_DnREdit == e.Key)
             {
                 if (e.State == KeyState.Down && !waitingForDnRUp && !isDnRDown)
                 {
+                    triggeredEditRampPlace = isEditRampPlaceModifierDown;
                     Task.Run(() =>
                     {
-                        input.SendKey(ConvertToInterceptorKey(defaultSettings.FnKey_Edit));
+                        input.SendKey(defaultSettings.FnKey_Edit);
                         Thread.Sleep(defaultSettings.Delay_DnRClickStart);
                         input.SendMouseEvent(MouseState.LeftDown);
                         isDnRDown = true;
@@ -106,21 +139,28 @@ namespace FortEZEdit
                             // Spin wait
                         }
                         Thread.Sleep(defaultSettings.Delay_DnrClickRelease);
-                        input.SendKey(ConvertToInterceptorKey(defaultSettings.FnKey_Edit));
+                        input.SendKey(defaultSettings.FnKey_Edit);
+                        if (triggeredEditRampPlace)
+                        {
+                            input.SendKey(defaultSettings.FnKey_Ramp);
+                            Thread.Sleep(defaultSettings.Delay_ReleaseEditRampPlaceDelay);
+                            input.SendKey(defaultSettings.FnKey_Shotgun);
+                        }
                         input.SendMouseEvent(MouseState.LeftUp);
                         isDnRDown = false;
+                        triggeredEditRampPlace = false;
                     });
                     waitingForDnRUp = false;
                 }
-            } else if (ConvertToInterceptorKey(defaultSettings.Key_Reset) == e.Key && e.State == KeyState.Down)
+            } else if (defaultSettings.Key_Reset == e.Key && e.State == KeyState.Down)
             {
                 Task.Run(() =>
                 {
-                    input.SendKey(ConvertToInterceptorKey(defaultSettings.FnKey_Edit));
+                    input.SendKey(defaultSettings.FnKey_Edit);
                     Thread.Sleep(defaultSettings.Delay_ResetPreClick);
                     input.SendRightClick();
                     Thread.Sleep(defaultSettings.Delay_ResetPostClick);
-                    input.SendKey(ConvertToInterceptorKey(defaultSettings.FnKey_Edit));
+                    input.SendKey(defaultSettings.FnKey_Edit);
                 });
             }
         }

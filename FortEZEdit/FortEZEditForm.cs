@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Interceptor;
 
 namespace FortEZEdit
 {
     public partial class FortEZEditForm : Form
     {
-        private Dictionary<object, Action<object>> settingsSetterMap = new Dictionary<object, Action<object>>();
+        private static Dictionary<object, Action<object>> settingsSetterMap = new Dictionary<object, Action<object>>();
 
         public FortEZEditForm()
         {
@@ -46,37 +47,56 @@ namespace FortEZEdit
             lblInterceptionStatus.ForeColor = Color.DarkGreen;
 
             LoadSettings();
+
+            InterceptorFacade.Instance.addListener(new ButtonListener(this));
+            InterceptorFacade.Instance.setBroadcasting(false);
         }
 
         private void LoadSettings()
         {
-            btnFnKeyEdit.Text = Properties.Settings.Default.FnKey_Edit;
-            settingsSetterMap[btnFnKeyEdit] = (s) => { Properties.Settings.Default.FnKey_Edit = (string) s; };
+            this.Invoke(new Action(() =>
+            {
+                btnFnKeyEdit.Text = Properties.Settings.Default.FnKey_Edit.ToString();
+                settingsSetterMap[btnFnKeyEdit] = (s) => { Properties.Settings.Default.FnKey_Edit = (Interceptor.Keys)s; };
 
-            btnKeyDnR.Text = Properties.Settings.Default.Key_DnREdit;
-            settingsSetterMap[btnKeyDnR] = (s) => { Properties.Settings.Default.Key_DnREdit = (string) s; };
-            
-            numHoldDelay.Value = Properties.Settings.Default.Delay_DnRClickStart;
-            settingsSetterMap[numHoldDelay] = (s) => { Properties.Settings.Default.Delay_DnRClickStart = (int) s; };
+                btnKeyDnR.Text = Properties.Settings.Default.Key_DnREdit.ToString();
+                settingsSetterMap[btnKeyDnR] = (s) => { Properties.Settings.Default.Key_DnREdit = (Interceptor.Keys)s; };
 
-            numReleaseDelay.Value = Properties.Settings.Default.Delay_DnrClickRelease;
-            settingsSetterMap[numReleaseDelay] = (s) => { Properties.Settings.Default.Delay_DnrClickRelease = (int) s; };
-            
-            btnKeyReset.Text = Properties.Settings.Default.Key_Reset;
-            settingsSetterMap[btnKeyReset] = (s) => { Properties.Settings.Default.Key_Reset = (string)s; };
+                numHoldDelay.Value = Properties.Settings.Default.Delay_DnRClickStart;
+                settingsSetterMap[numHoldDelay] = (s) => { Properties.Settings.Default.Delay_DnRClickStart = (int)s; };
 
-            numResetPreClickDelay.Value = Properties.Settings.Default.Delay_ResetPreClick;
-            settingsSetterMap[numResetPreClickDelay] = (s) => { Properties.Settings.Default.Delay_ResetPreClick = (int)s; };
+                numReleaseDelay.Value = Properties.Settings.Default.Delay_DnrClickRelease;
+                settingsSetterMap[numReleaseDelay] = (s) => { Properties.Settings.Default.Delay_DnrClickRelease = (int)s; };
 
-            numResetPostClickDelay.Value = Properties.Settings.Default.Delay_ResetPostClick;
-            settingsSetterMap[numResetPostClickDelay] = (s) => { Properties.Settings.Default.Delay_ResetPostClick = (int)s; };
+                btnKeyReset.Text = Properties.Settings.Default.Key_Reset.ToString();
+                settingsSetterMap[btnKeyReset] = (s) => { Properties.Settings.Default.Key_Reset = (Interceptor.Keys)s; };
 
-            numMouseId.Value = Properties.Settings.Default.id_Mouse;
-            settingsSetterMap[numMouseId] = (s) => {
-                int value = (int)s;
-                Properties.Settings.Default.id_Mouse = value;
-                InterceptorFacade.Instance.SetMouseId(value);
-            };
+                numResetPreClickDelay.Value = Properties.Settings.Default.Delay_ResetPreClick;
+                settingsSetterMap[numResetPreClickDelay] = (s) => { Properties.Settings.Default.Delay_ResetPreClick = (int)s; };
+
+                numResetPostClickDelay.Value = Properties.Settings.Default.Delay_ResetPostClick;
+                settingsSetterMap[numResetPostClickDelay] = (s) => { Properties.Settings.Default.Delay_ResetPostClick = (int)s; };
+
+                btnEditRampPlaceModifier.Text = Properties.Settings.Default.Key_EditRampPlaceModifier.ToString();
+                settingsSetterMap[btnEditRampPlaceModifier] = (s) => { Properties.Settings.Default.Key_EditRampPlaceModifier = (Interceptor.Keys)s; };
+
+                btnFnKeyRamp.Text = Properties.Settings.Default.FnKey_Ramp.ToString();
+                settingsSetterMap[btnFnKeyRamp] = (s) => { Properties.Settings.Default.FnKey_Ramp = (Interceptor.Keys)s; };
+
+                numEditRampPlaceReleaseDelay.Value = Properties.Settings.Default.Delay_ReleaseEditRampPlaceDelay;
+                settingsSetterMap[numEditRampPlaceReleaseDelay] = (s) => { Properties.Settings.Default.Delay_ReleaseEditRampPlaceDelay = (int)s; };
+
+                btnFnKeyShotgun.Text = Properties.Settings.Default.FnKey_Shotgun.ToString();
+                settingsSetterMap[btnFnKeyShotgun] = (s) => { Properties.Settings.Default.FnKey_Shotgun = (Interceptor.Keys)s; };
+
+                numMouseId.Value = Properties.Settings.Default.id_Mouse;
+                settingsSetterMap[numMouseId] = (s) =>
+                {
+                    int value = (int)s;
+                    Properties.Settings.Default.id_Mouse = value;
+                    InterceptorFacade.Instance.SetMouseId(value);
+                };
+            }));
         }
 
         private void SetInterceptionStatusError(string message)
@@ -103,26 +123,40 @@ namespace FortEZEdit
             MessageBox.Show("Installation successful, you MUST restart your pc for changes to take effect!", "Interception installation", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        private static Button changingKey = null;
+        public class ButtonListener : InterceptionListener
+        {
+            private FortEZEditForm form;
+
+            public ButtonListener(FortEZEditForm form)
+            {
+                this.form = form;
+            }
+
+            public override void OnKeyDown(Interceptor.Keys key)
+            {
+                if (changingKey != null)
+                {
+                    if (settingsSetterMap.ContainsKey(changingKey))
+                    {
+                        settingsSetterMap[changingKey].Invoke(key);
+                        form.LoadSettings();
+                    }
+                    changingKey = null;
+
+                    InterceptorFacade.Instance.setBroadcasting(false);
+                }
+            }
+        }
+
         private void changeKeyEvent(object sender, EventArgs e)
         {
             if (sender is Button)
             {
                 changingKey = (Button) sender;
                 changingKey.Text = "...";
-            }
-        }
 
-        Button changingKey = null;
-        private void FortEZEditForm_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (changingKey != null)
-            {
-                if (settingsSetterMap.ContainsKey(changingKey))
-                {
-                    settingsSetterMap[changingKey].Invoke(e.KeyChar.ToString().ToUpper());
-                    LoadSettings();
-                }
-                changingKey = null;
+                InterceptorFacade.Instance.setBroadcasting(true);
             }
         }
 

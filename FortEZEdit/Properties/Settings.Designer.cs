@@ -12,7 +12,7 @@ namespace FortEZEdit.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.8.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -26,9 +26,9 @@ namespace FortEZEdit.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("E")]
-        public string FnKey_Edit {
+        public global::Interceptor.Keys FnKey_Edit {
             get {
-                return ((string)(this["FnKey_Edit"]));
+                return ((global::Interceptor.Keys)(this["FnKey_Edit"]));
             }
             set {
                 this["FnKey_Edit"] = value;
@@ -37,10 +37,10 @@ namespace FortEZEdit.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("T")]
-        public string Key_DnREdit {
+        [global::System.Configuration.DefaultSettingValueAttribute("V")]
+        public global::Interceptor.Keys Key_DnREdit {
             get {
-                return ((string)(this["Key_DnREdit"]));
+                return ((global::Interceptor.Keys)(this["Key_DnREdit"]));
             }
             set {
                 this["Key_DnREdit"] = value;
@@ -49,7 +49,7 @@ namespace FortEZEdit.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("70")]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
         public int Delay_DnRClickStart {
             get {
                 return ((int)(this["Delay_DnRClickStart"]));
@@ -74,9 +74,9 @@ namespace FortEZEdit.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Y")]
-        public string Key_Reset {
+        public global::Interceptor.Keys Key_Reset {
             get {
-                return ((string)(this["Key_Reset"]));
+                return ((global::Interceptor.Keys)(this["Key_Reset"]));
             }
             set {
                 this["Key_Reset"] = value;
@@ -85,7 +85,7 @@ namespace FortEZEdit.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("80")]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
         public int Delay_ResetPreClick {
             get {
                 return ((int)(this["Delay_ResetPreClick"]));
@@ -97,7 +97,7 @@ namespace FortEZEdit.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("20")]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
         public int Delay_ResetPostClick {
             get {
                 return ((int)(this["Delay_ResetPostClick"]));
@@ -110,9 +110,9 @@ namespace FortEZEdit.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("F10")]
-        public string Key_Pause {
+        public global::Interceptor.Keys Key_Pause {
             get {
-                return ((string)(this["Key_Pause"]));
+                return ((global::Interceptor.Keys)(this["Key_Pause"]));
             }
             set {
                 this["Key_Pause"] = value;
@@ -128,6 +128,54 @@ namespace FortEZEdit.Properties {
             }
             set {
                 this["id_Mouse"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Control")]
+        public global::Interceptor.Keys Key_EditRampPlaceModifier {
+            get {
+                return ((global::Interceptor.Keys)(this["Key_EditRampPlaceModifier"]));
+            }
+            set {
+                this["Key_EditRampPlaceModifier"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C")]
+        public global::Interceptor.Keys FnKey_Ramp {
+            get {
+                return ((global::Interceptor.Keys)(this["FnKey_Ramp"]));
+            }
+            set {
+                this["FnKey_Ramp"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("80")]
+        public int Delay_ReleaseEditRampPlaceDelay {
+            get {
+                return ((int)(this["Delay_ReleaseEditRampPlaceDelay"]));
+            }
+            set {
+                this["Delay_ReleaseEditRampPlaceDelay"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Two")]
+        public global::Interceptor.Keys FnKey_Shotgun {
+            get {
+                return ((global::Interceptor.Keys)(this["FnKey_Shotgun"]));
+            }
+            set {
+                this["FnKey_Shotgun"] = value;
             }
         }
     }

@@ -140,7 +140,7 @@ namespace FortEZEdit
                         }
                         Thread.Sleep(defaultSettings.Delay_DnrClickRelease);
                         input.SendKey(defaultSettings.FnKey_Edit);
-                        if (triggeredEditRampPlace)
+                        if (triggeredEditRampPlace || isEditRampPlaceModifierDown)
                         {
                             input.SendKey(defaultSettings.FnKey_Ramp);
                             Thread.Sleep(defaultSettings.Delay_ReleaseEditRampPlaceDelay);

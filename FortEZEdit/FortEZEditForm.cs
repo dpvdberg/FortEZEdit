@@ -89,6 +89,9 @@ namespace FortEZEdit
                 btnFnKeyShotgun.Text = Properties.Settings.Default.FnKey_Shotgun.ToString();
                 settingsSetterMap[btnFnKeyShotgun] = (s) => { Properties.Settings.Default.FnKey_Shotgun = (Interceptor.Keys)s; };
 
+                chkEditToConfirm.Checked = Properties.Settings.Default.Check_EditToConfirm;
+                settingsSetterMap[chkEditToConfirm] = (s) => { Properties.Settings.Default.Check_EditToConfirm = (bool)s; };
+
                 numMouseId.Value = Properties.Settings.Default.id_Mouse;
                 settingsSetterMap[numMouseId] = (s) =>
                 {
@@ -173,7 +176,16 @@ namespace FortEZEdit
                 settingsSetterMap[changingUpDown].Invoke(Convert.ToInt32(changingUpDown.Value));
                 LoadSettings();
             }
-            changingUpDown = null;
+        }
+
+        private void changeCheckEvent(object sender, EventArgs e)
+        {
+            CheckBox changingCheckBox = (CheckBox)sender;
+            if (settingsSetterMap.ContainsKey(changingCheckBox))
+            {
+                settingsSetterMap[changingCheckBox].Invoke(changingCheckBox.Checked);
+                LoadSettings();
+            }
         }
     }
 }

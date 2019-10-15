@@ -61,6 +61,7 @@
             this.btnFnKeyEdit = new System.Windows.Forms.Button();
             this.lblEditKey = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.chkEditToConfirm = new System.Windows.Forms.CheckBox();
             this.centerPanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numEditRampPlaceReleaseDelay)).BeginInit();
@@ -274,6 +275,7 @@
             // 
             // grpDnR
             // 
+            this.grpDnR.Controls.Add(this.chkEditToConfirm);
             this.grpDnR.Controls.Add(this.numReleaseDelay);
             this.grpDnR.Controls.Add(this.lblReleaseDelay);
             this.grpDnR.Controls.Add(this.lblHoldDelay);
@@ -418,6 +420,17 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Ramp key:";
             // 
+            // chkEditToConfirm
+            // 
+            this.chkEditToConfirm.AutoSize = true;
+            this.chkEditToConfirm.Location = new System.Drawing.Point(168, 24);
+            this.chkEditToConfirm.Name = "chkEditToConfirm";
+            this.chkEditToConfirm.Size = new System.Drawing.Size(121, 17);
+            this.chkEditToConfirm.TabIndex = 6;
+            this.chkEditToConfirm.Text = "Press edit to confirm";
+            this.chkEditToConfirm.UseVisualStyleBackColor = true;
+            this.chkEditToConfirm.CheckedChanged += new System.EventHandler(this.changeCheckEvent);
+            // 
             // FortEZEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -490,6 +503,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnFnKeyShotgun;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox chkEditToConfirm;
     }
 }
 

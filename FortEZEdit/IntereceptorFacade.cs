@@ -139,13 +139,19 @@ namespace FortEZEdit
                             // Spin wait
                         }
                         Thread.Sleep(defaultSettings.Delay_DnrClickRelease);
-                        input.SendKey(defaultSettings.FnKey_Edit);
+                        // Confirm the edit
+                        if (defaultSettings.Check_EditToConfirm)
+                        {
+                            input.SendKey(defaultSettings.FnKey_Edit);
+                        }
+                        // If ramp placement is triggered, build the ramp and select shotgun
                         if (triggeredEditRampPlace || isEditRampPlaceModifierDown)
                         {
                             input.SendKey(defaultSettings.FnKey_Ramp);
                             Thread.Sleep(defaultSettings.Delay_ReleaseEditRampPlaceDelay);
                             input.SendKey(defaultSettings.FnKey_Shotgun);
                         }
+                        // Release mouse
                         input.SendMouseEvent(MouseState.LeftUp);
                         isDnRDown = false;
                         triggeredEditRampPlace = false;

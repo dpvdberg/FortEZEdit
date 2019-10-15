@@ -12,7 +12,7 @@ namespace FortEZEdit.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.8.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -133,7 +133,7 @@ namespace FortEZEdit.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Control")]
+        [global::System.Configuration.DefaultSettingValueAttribute("F")]
         public global::Interceptor.Keys Key_EditRampPlaceModifier {
             get {
                 return ((global::Interceptor.Keys)(this["Key_EditRampPlaceModifier"]));
@@ -176,6 +176,18 @@ namespace FortEZEdit.Properties {
             }
             set {
                 this["FnKey_Shotgun"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool Check_EditToConfirm {
+            get {
+                return ((bool)(this["Check_EditToConfirm"]));
+            }
+            set {
+                this["Check_EditToConfirm"] = value;
             }
         }
     }

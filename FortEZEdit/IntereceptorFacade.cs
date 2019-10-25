@@ -87,9 +87,8 @@ namespace FortEZEdit
         {
             isFortniteActive = GetCaptionOfActiveWindow().ToLower().Contains("fortnite");
         }
-
+        
         private bool waitingForDnRUp;
-        private bool isDnRDown;
         private bool paused;
         private bool isEditRampPlaceModifierDown;
         private bool triggeredEditRampPlace;
@@ -117,9 +116,14 @@ namespace FortEZEdit
             if (defaultSettings.Key_EditRampPlaceModifier == e.Key)
             {
                 isEditRampPlaceModifierDown = e.State == KeyState.Down;
-            } else if (defaultSettings.Key_DnREdit == e.Key)
+                if (isEditRampPlaceModifierDown && waitingForDnRUp)
+                {
+                    triggeredEditRampPlace = true;
+                }
+            }
+            else if (defaultSettings.Key_DnREdit == e.Key)
             {
-                if (e.State == KeyState.Down && !waitingForDnRUp && !isDnRDown)
+                if (e.State == KeyState.Down && !waitingForDnRUp)
                 {
                     triggeredEditRampPlace = isEditRampPlaceModifierDown;
                     Task.Run(() =>
@@ -127,38 +131,42 @@ namespace FortEZEdit
                         input.SendKey(defaultSettings.FnKey_Edit);
                         Thread.Sleep(defaultSettings.Delay_DnRClickStart);
                         input.SendMouseEvent(MouseState.LeftDown);
-                        isDnRDown = true;
                     });
                     waitingForDnRUp = true;
-                } else if (e.State == KeyState.Up)
+                }
+                else if (e.State == KeyState.Up)
                 {
                     Task.Run(() =>
                     {
-                        while (!isDnRDown)
-                        {
-                            // Spin wait
-                        }
                         Thread.Sleep(defaultSettings.Delay_DnrClickRelease);
                         // Confirm the edit
                         if (defaultSettings.Check_EditToConfirm)
                         {
                             input.SendKey(defaultSettings.FnKey_Edit);
                         }
+                        else
+                        {
+                            input.SendMouseEvent(MouseState.LeftUp);
+                        }
                         // If ramp placement is triggered, build the ramp and select shotgun
                         if (triggeredEditRampPlace || isEditRampPlaceModifierDown)
                         {
+                            if (!defaultSettings.Check_EditToConfirm)
+                            {
+                                input.SendMouseEvent(MouseState.LeftDown);
+                            }
                             input.SendKey(defaultSettings.FnKey_Ramp);
                             Thread.Sleep(defaultSettings.Delay_ReleaseEditRampPlaceDelay);
                             input.SendKey(defaultSettings.FnKey_Shotgun);
                         }
                         // Release mouse
                         input.SendMouseEvent(MouseState.LeftUp);
-                        isDnRDown = false;
                         triggeredEditRampPlace = false;
                     });
                     waitingForDnRUp = false;
                 }
-            } else if (defaultSettings.Key_Reset == e.Key && e.State == KeyState.Down)
+            }
+            else if (defaultSettings.Key_Reset == e.Key && e.State == KeyState.Down)
             {
                 Task.Run(() =>
                 {

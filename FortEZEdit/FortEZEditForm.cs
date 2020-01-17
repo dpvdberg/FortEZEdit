@@ -83,6 +83,15 @@ namespace FortEZEdit
                 btnFnKeyRamp.Text = Properties.Settings.Default.FnKey_Ramp.ToString();
                 settingsSetterMap[btnFnKeyRamp] = (s) => { Properties.Settings.Default.FnKey_Ramp = (Interceptor.Keys)s; };
 
+                btnFnKeyCone.Text = Properties.Settings.Default.FnKey_Cone.ToString();
+                settingsSetterMap[btnFnKeyCone] = (s) => { Properties.Settings.Default.FnKey_Cone = (Interceptor.Keys)s; };
+
+                btnFnKeyFloor.Text = Properties.Settings.Default.FnKey_Floor.ToString();
+                settingsSetterMap[btnFnKeyFloor] = (s) => { Properties.Settings.Default.FnKey_Floor = (Interceptor.Keys)s; };
+
+                btnFnKeyWall.Text = Properties.Settings.Default.FnKey_Wall.ToString();
+                settingsSetterMap[btnFnKeyWall] = (s) => { Properties.Settings.Default.FnKey_Wall = (Interceptor.Keys)s; };
+
                 numEditRampPlaceReleaseDelay.Value = Properties.Settings.Default.Delay_ReleaseEditRampPlaceDelay;
                 settingsSetterMap[numEditRampPlaceReleaseDelay] = (s) => { Properties.Settings.Default.Delay_ReleaseEditRampPlaceDelay = (int)s; };
 

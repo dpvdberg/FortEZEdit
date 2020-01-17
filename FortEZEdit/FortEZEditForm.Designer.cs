@@ -48,6 +48,7 @@
             this.btnKeyReset = new System.Windows.Forms.Button();
             this.lblKeyReset = new System.Windows.Forms.Label();
             this.grpDnR = new System.Windows.Forms.GroupBox();
+            this.chkEditToConfirm = new System.Windows.Forms.CheckBox();
             this.numReleaseDelay = new System.Windows.Forms.NumericUpDown();
             this.lblReleaseDelay = new System.Windows.Forms.Label();
             this.lblHoldDelay = new System.Windows.Forms.Label();
@@ -56,12 +57,17 @@
             this.lblKeyDnR = new System.Windows.Forms.Label();
             this.grpFortniteKeys = new System.Windows.Forms.GroupBox();
             this.btnFnKeyShotgun = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblShotgun = new System.Windows.Forms.Label();
             this.btnFnKeyRamp = new System.Windows.Forms.Button();
             this.btnFnKeyEdit = new System.Windows.Forms.Button();
             this.lblEditKey = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.chkEditToConfirm = new System.Windows.Forms.CheckBox();
+            this.lblRampKeys = new System.Windows.Forms.Label();
+            this.btnFnKeyFloor = new System.Windows.Forms.Button();
+            this.lblFloorKey = new System.Windows.Forms.Label();
+            this.btnFnKeyCone = new System.Windows.Forms.Button();
+            this.lblConeKey = new System.Windows.Forms.Label();
+            this.btnFnKeyWall = new System.Windows.Forms.Button();
+            this.lblWallKey = new System.Windows.Forms.Label();
             this.centerPanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numEditRampPlaceReleaseDelay)).BeginInit();
@@ -105,6 +111,8 @@
             // 
             // centerPanel
             // 
+            this.centerPanel.Controls.Add(this.btnFnKeyCone);
+            this.centerPanel.Controls.Add(this.lblConeKey);
             this.centerPanel.Controls.Add(this.groupBox1);
             this.centerPanel.Controls.Add(this.numMouseId);
             this.centerPanel.Controls.Add(this.lblMouseId);
@@ -113,7 +121,7 @@
             this.centerPanel.Controls.Add(this.grpFortniteKeys);
             this.centerPanel.Location = new System.Drawing.Point(-1, 42);
             this.centerPanel.Name = "centerPanel";
-            this.centerPanel.Size = new System.Drawing.Size(332, 375);
+            this.centerPanel.Size = new System.Drawing.Size(332, 394);
             this.centerPanel.TabIndex = 3;
             // 
             // groupBox1
@@ -122,7 +130,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.btnEditRampPlaceModifier);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Location = new System.Drawing.Point(3, 313);
+            this.groupBox1.Location = new System.Drawing.Point(3, 333);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(326, 58);
             this.groupBox1.TabIndex = 7;
@@ -204,7 +212,7 @@
             this.grpReset.Controls.Add(this.numResetPreClickDelay);
             this.grpReset.Controls.Add(this.btnKeyReset);
             this.grpReset.Controls.Add(this.lblKeyReset);
-            this.grpReset.Location = new System.Drawing.Point(3, 225);
+            this.grpReset.Location = new System.Drawing.Point(3, 245);
             this.grpReset.Name = "grpReset";
             this.grpReset.Size = new System.Drawing.Size(326, 82);
             this.grpReset.TabIndex = 6;
@@ -282,12 +290,23 @@
             this.grpDnR.Controls.Add(this.numHoldDelay);
             this.grpDnR.Controls.Add(this.btnKeyDnR);
             this.grpDnR.Controls.Add(this.lblKeyDnR);
-            this.grpDnR.Location = new System.Drawing.Point(3, 137);
+            this.grpDnR.Location = new System.Drawing.Point(3, 157);
             this.grpDnR.Name = "grpDnR";
             this.grpDnR.Size = new System.Drawing.Size(326, 82);
             this.grpDnR.TabIndex = 1;
             this.grpDnR.TabStop = false;
             this.grpDnR.Text = "Drag-n-Release Edit";
+            // 
+            // chkEditToConfirm
+            // 
+            this.chkEditToConfirm.AutoSize = true;
+            this.chkEditToConfirm.Location = new System.Drawing.Point(168, 24);
+            this.chkEditToConfirm.Name = "chkEditToConfirm";
+            this.chkEditToConfirm.Size = new System.Drawing.Size(121, 17);
+            this.chkEditToConfirm.TabIndex = 6;
+            this.chkEditToConfirm.Text = "Press edit to confirm";
+            this.chkEditToConfirm.UseVisualStyleBackColor = true;
+            this.chkEditToConfirm.CheckedChanged += new System.EventHandler(this.changeCheckEvent);
             // 
             // numReleaseDelay
             // 
@@ -353,36 +372,40 @@
             // 
             // grpFortniteKeys
             // 
+            this.grpFortniteKeys.Controls.Add(this.btnFnKeyWall);
+            this.grpFortniteKeys.Controls.Add(this.lblWallKey);
+            this.grpFortniteKeys.Controls.Add(this.btnFnKeyFloor);
+            this.grpFortniteKeys.Controls.Add(this.lblFloorKey);
             this.grpFortniteKeys.Controls.Add(this.btnFnKeyShotgun);
-            this.grpFortniteKeys.Controls.Add(this.label5);
+            this.grpFortniteKeys.Controls.Add(this.lblShotgun);
             this.grpFortniteKeys.Controls.Add(this.btnFnKeyRamp);
             this.grpFortniteKeys.Controls.Add(this.btnFnKeyEdit);
             this.grpFortniteKeys.Controls.Add(this.lblEditKey);
-            this.grpFortniteKeys.Controls.Add(this.label2);
+            this.grpFortniteKeys.Controls.Add(this.lblRampKeys);
             this.grpFortniteKeys.Location = new System.Drawing.Point(3, 36);
             this.grpFortniteKeys.Name = "grpFortniteKeys";
-            this.grpFortniteKeys.Size = new System.Drawing.Size(326, 95);
+            this.grpFortniteKeys.Size = new System.Drawing.Size(326, 115);
             this.grpFortniteKeys.TabIndex = 0;
             this.grpFortniteKeys.TabStop = false;
             this.grpFortniteKeys.Text = "Fortnite Keys";
             // 
             // btnFnKeyShotgun
             // 
-            this.btnFnKeyShotgun.Location = new System.Drawing.Point(78, 57);
+            this.btnFnKeyShotgun.Location = new System.Drawing.Point(62, 48);
             this.btnFnKeyShotgun.Name = "btnFnKeyShotgun";
             this.btnFnKeyShotgun.Size = new System.Drawing.Size(81, 23);
             this.btnFnKeyShotgun.TabIndex = 3;
             this.btnFnKeyShotgun.UseVisualStyleBackColor = true;
             this.btnFnKeyShotgun.Click += new System.EventHandler(this.changeKeyEvent);
             // 
-            // label5
+            // lblShotgun
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 62);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(70, 13);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Shotgun key:";
+            this.lblShotgun.AutoSize = true;
+            this.lblShotgun.Location = new System.Drawing.Point(6, 53);
+            this.lblShotgun.Name = "lblShotgun";
+            this.lblShotgun.Size = new System.Drawing.Size(50, 13);
+            this.lblShotgun.TabIndex = 2;
+            this.lblShotgun.Text = "Shotgun:";
             // 
             // btnFnKeyRamp
             // 
@@ -411,31 +434,74 @@
             this.lblEditKey.TabIndex = 0;
             this.lblEditKey.Text = "Edit key:";
             // 
-            // label2
+            // lblRampKeys
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(155, 24);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Ramp key:";
+            this.lblRampKeys.AutoSize = true;
+            this.lblRampKeys.Location = new System.Drawing.Point(155, 24);
+            this.lblRampKeys.Name = "lblRampKeys";
+            this.lblRampKeys.Size = new System.Drawing.Size(58, 13);
+            this.lblRampKeys.TabIndex = 0;
+            this.lblRampKeys.Text = "Ramp key:";
             // 
-            // chkEditToConfirm
+            // btnFnKeyFloor
             // 
-            this.chkEditToConfirm.AutoSize = true;
-            this.chkEditToConfirm.Location = new System.Drawing.Point(168, 24);
-            this.chkEditToConfirm.Name = "chkEditToConfirm";
-            this.chkEditToConfirm.Size = new System.Drawing.Size(121, 17);
-            this.chkEditToConfirm.TabIndex = 6;
-            this.chkEditToConfirm.Text = "Press edit to confirm";
-            this.chkEditToConfirm.UseVisualStyleBackColor = true;
-            this.chkEditToConfirm.CheckedChanged += new System.EventHandler(this.changeCheckEvent);
+            this.btnFnKeyFloor.Location = new System.Drawing.Point(219, 48);
+            this.btnFnKeyFloor.Name = "btnFnKeyFloor";
+            this.btnFnKeyFloor.Size = new System.Drawing.Size(76, 23);
+            this.btnFnKeyFloor.TabIndex = 5;
+            this.btnFnKeyFloor.UseVisualStyleBackColor = true;
+            this.btnFnKeyFloor.Click += new System.EventHandler(this.changeKeyEvent);
+            // 
+            // lblFloorKey
+            // 
+            this.lblFloorKey.AutoSize = true;
+            this.lblFloorKey.Location = new System.Drawing.Point(155, 53);
+            this.lblFloorKey.Name = "lblFloorKey";
+            this.lblFloorKey.Size = new System.Drawing.Size(53, 13);
+            this.lblFloorKey.TabIndex = 4;
+            this.lblFloorKey.Text = "Floor key:";
+            // 
+            // btnFnKeyCone
+            // 
+            this.btnFnKeyCone.Location = new System.Drawing.Point(222, 113);
+            this.btnFnKeyCone.Name = "btnFnKeyCone";
+            this.btnFnKeyCone.Size = new System.Drawing.Size(76, 23);
+            this.btnFnKeyCone.TabIndex = 7;
+            this.btnFnKeyCone.UseVisualStyleBackColor = true;
+            this.btnFnKeyCone.Click += new System.EventHandler(this.changeKeyEvent);
+            // 
+            // lblConeKey
+            // 
+            this.lblConeKey.AutoSize = true;
+            this.lblConeKey.Location = new System.Drawing.Point(158, 118);
+            this.lblConeKey.Name = "lblConeKey";
+            this.lblConeKey.Size = new System.Drawing.Size(55, 13);
+            this.lblConeKey.TabIndex = 6;
+            this.lblConeKey.Text = "Cone key:";
+            // 
+            // btnFnKeyWall
+            // 
+            this.btnFnKeyWall.Location = new System.Drawing.Point(62, 77);
+            this.btnFnKeyWall.Name = "btnFnKeyWall";
+            this.btnFnKeyWall.Size = new System.Drawing.Size(81, 23);
+            this.btnFnKeyWall.TabIndex = 10;
+            this.btnFnKeyWall.UseVisualStyleBackColor = true;
+            this.btnFnKeyWall.Click += new System.EventHandler(this.changeKeyEvent);
+            // 
+            // lblWallKey
+            // 
+            this.lblWallKey.AutoSize = true;
+            this.lblWallKey.Location = new System.Drawing.Point(6, 82);
+            this.lblWallKey.Name = "lblWallKey";
+            this.lblWallKey.Size = new System.Drawing.Size(51, 13);
+            this.lblWallKey.TabIndex = 9;
+            this.lblWallKey.Text = "Wall key:";
             // 
             // FortEZEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(332, 420);
+            this.ClientSize = new System.Drawing.Size(332, 435);
             this.Controls.Add(this.centerPanel);
             this.Controls.Add(this.lblInterceptionStatus);
             this.Controls.Add(this.btnInstallInterception);
@@ -497,13 +563,19 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnFnKeyRamp;
         private System.Windows.Forms.Button btnEditRampPlaceModifier;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblRampKeys;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown numEditRampPlaceReleaseDelay;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnFnKeyShotgun;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblShotgun;
         private System.Windows.Forms.CheckBox chkEditToConfirm;
+        private System.Windows.Forms.Button btnFnKeyCone;
+        private System.Windows.Forms.Label lblConeKey;
+        private System.Windows.Forms.Button btnFnKeyWall;
+        private System.Windows.Forms.Label lblWallKey;
+        private System.Windows.Forms.Button btnFnKeyFloor;
+        private System.Windows.Forms.Label lblFloorKey;
     }
 }
 

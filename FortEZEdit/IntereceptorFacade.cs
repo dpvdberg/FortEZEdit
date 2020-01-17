@@ -79,13 +79,123 @@ namespace FortEZEdit
             uint processId;
             GetWindowThreadProcessId(handle, out processId);
 
-            return Process.GetProcessById((int) processId).ProcessName;
+            return Process.GetProcessById((int)processId).ProcessName;
         }
 
         private bool isFortniteActive = false;
         private void ActiveProcessTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
             isFortniteActive = GetCaptionOfActiveWindow().ToLower().Contains("fortnite");
+        }
+
+        private enum TUNNEL_TYPE
+        {
+            FORWARD_SIMPLE
+        }
+
+        private bool isTunneling = false;
+        Thread tunnelThread;
+        private void Tunnel(TUNNEL_TYPE type)
+        {
+            isTunneling = true;
+            Properties.Settings defaultSettings = Properties.Settings.Default;
+
+            TunnelSetup(type);
+
+            input.SendKey(Keys.W, KeyState.Down);
+            Thread.Sleep(100);
+            bool isRightFirst = true;
+            while(isTunneling)
+            {
+                input.SendKey(defaultSettings.FnKey_Floor);
+                input.SendMouseEvent(MouseState.LeftDown);
+
+                Thread.Sleep(300);
+
+                // Look up slightly
+                input.MoveMouseBy(0, -600, true);
+                Thread.Sleep(100);
+
+                // Look back down
+                input.MoveMouseBy(0, 600, true);
+                input.SendMouseEvent(MouseState.LeftUp);
+
+                Thread.Sleep(440);
+
+                Wall(isRightFirst, defaultSettings, true, true, MOUSE_TURN60);
+                Wall(!isRightFirst, defaultSettings, true, true, MOUSE_TURN60);
+                isRightFirst = !isRightFirst;
+            }
+            input.SendKey(Keys.W, KeyState.Up);
+        }
+
+        private void TunnelSetup(TUNNEL_TYPE type)
+        {
+            CenterScreen();
+            if (type == TUNNEL_TYPE.FORWARD_SIMPLE)
+            {
+                // Look down slightly
+                input.MoveMouseBy(0, 200, true);
+
+                Properties.Settings defaultSettings = Properties.Settings.Default;
+
+                Wall(true, defaultSettings);
+                Wall(false, defaultSettings);
+
+                input.SendKey(defaultSettings.FnKey_Floor);
+                input.MoveMouseBy(0, -2000, true);
+                input.SendMouseEvent(MouseState.LeftDown);
+                Thread.Sleep(BUILD_WAIT);
+                input.SendMouseEvent(MouseState.LeftUp);
+                Thread.Sleep(MOUSE_MOVE_SLEEP);
+                input.MoveMouseBy(0, 2000, true);
+
+
+                Thread.Sleep(MOUSE_MOVE_SLEEP);
+            }
+        }
+
+        private const int MAX_MOUSE_MOVE = 2500;
+        private const int MOUSE_MOVE_SLEEP = 5;
+        private const int MOUSE_TURN360 = 10600;
+        private const int MOUSE_TURN90 = (int) (MOUSE_TURN360 / 4.0);
+        private const int MOUSE_TURN180 = (int) (MOUSE_TURN360 / 2.0);
+        private const int MOUSE_TURN45 = (int)(MOUSE_TURN90 / 2.0);
+        private const int MOUSE_TURN60 = (int)(MOUSE_TURN360 * (60.0 / 360.0));
+        private const int BUILD_WAIT = 55;
+
+        private void Wall(bool right, Properties.Settings settings, bool reset = true, bool releaseMouse = true, int turn = MOUSE_TURN90)
+        {
+            input.MoveMouseBy(right ? turn : -turn, 0, true);
+            Thread.Sleep(MOUSE_MOVE_SLEEP * 2);
+            input.SendKey(settings.FnKey_Wall);
+            input.SendMouseEvent(MouseState.LeftDown);
+            Thread.Sleep(BUILD_WAIT);
+            if (releaseMouse)
+            {
+                input.SendMouseEvent(MouseState.LeftUp);
+                Thread.Sleep(MOUSE_MOVE_SLEEP * 2);
+            }
+            if (reset)
+            {
+                input.MoveMouseBy(right ? -turn : turn, 0, true);
+                Thread.Sleep(MOUSE_MOVE_SLEEP);
+            }
+        }
+
+        private void CenterScreen()
+        {
+            // Flush down
+            input.MoveMouseBy(0, MAX_MOUSE_MOVE, true);
+            Thread.Sleep(MOUSE_MOVE_SLEEP);
+            input.MoveMouseBy(0, MAX_MOUSE_MOVE, true);
+            Thread.Sleep(MOUSE_MOVE_SLEEP);
+            input.MoveMouseBy(0, MAX_MOUSE_MOVE, true);
+            Thread.Sleep(MOUSE_MOVE_SLEEP);
+
+            // center camera
+            input.MoveMouseBy(0, -2600, true);
+            Thread.Sleep(MOUSE_MOVE_SLEEP);
         }
         
         private bool waitingForDnRUp;
@@ -111,6 +221,15 @@ namespace FortEZEdit
             if (paused || !isFortniteActive)
             {
                 return;
+            }
+
+            if (!isTunneling && Keys.Tilde == e.Key && e.State == KeyState.Down)
+            {
+                tunnelThread = new Thread(() => Tunnel(TUNNEL_TYPE.FORWARD_SIMPLE));
+                tunnelThread.Start();
+            } else if (Keys.Tilde == e.Key && e.State == KeyState.Up)
+            {
+                isTunneling = false;
             }
 
             if (defaultSettings.Key_EditRampPlaceModifier == e.Key)

@@ -44,5 +44,14 @@
     <Setting Name="Check_EditToConfirm" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="FnKey_Wall" Type="Interceptor.Keys" Scope="User">
+      <Value Profile="(Default)">Q</Value>
+    </Setting>
+    <Setting Name="FnKey_Floor" Type="Interceptor.Keys" Scope="User">
+      <Value Profile="(Default)">E</Value>
+    </Setting>
+    <Setting Name="FnKey_Cone" Type="Interceptor.Keys" Scope="User">
+      <Value Profile="(Default)">LeftShift</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -190,5 +190,41 @@ namespace FortEZEdit.Properties {
                 this["Check_EditToConfirm"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Q")]
+        public global::Interceptor.Keys FnKey_Wall {
+            get {
+                return ((global::Interceptor.Keys)(this["FnKey_Wall"]));
+            }
+            set {
+                this["FnKey_Wall"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("E")]
+        public global::Interceptor.Keys FnKey_Floor {
+            get {
+                return ((global::Interceptor.Keys)(this["FnKey_Floor"]));
+            }
+            set {
+                this["FnKey_Floor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("LeftShift")]
+        public global::Interceptor.Keys FnKey_Cone {
+            get {
+                return ((global::Interceptor.Keys)(this["FnKey_Cone"]));
+            }
+            set {
+                this["FnKey_Cone"] = value;
+            }
+        }
     }
 }

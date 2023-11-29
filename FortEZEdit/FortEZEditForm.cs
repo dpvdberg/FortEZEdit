@@ -101,6 +101,9 @@ namespace FortEZEdit
                 chkEditToConfirm.Checked = Properties.Settings.Default.Check_EditToConfirm;
                 settingsSetterMap[chkEditToConfirm] = (s) => { Properties.Settings.Default.Check_EditToConfirm = (bool)s; };
 
+                chkEditToConfirmReset.Checked = Properties.Settings.Default.Check_EditToConfirmReset;
+                settingsSetterMap[chkEditToConfirmReset] = (s) => { Properties.Settings.Default.Check_EditToConfirmReset = (bool)s; };
+
                 numMouseId.Value = Properties.Settings.Default.id_Mouse;
                 settingsSetterMap[numMouseId] = (s) =>
                 {

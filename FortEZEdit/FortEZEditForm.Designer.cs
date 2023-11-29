@@ -49,6 +49,7 @@
             this.lblKeyReset = new System.Windows.Forms.Label();
             this.grpDnR = new System.Windows.Forms.GroupBox();
             this.chkEditToConfirm = new System.Windows.Forms.CheckBox();
+            this.chkEditToConfirmReset = new System.Windows.Forms.CheckBox();
             this.numReleaseDelay = new System.Windows.Forms.NumericUpDown();
             this.lblReleaseDelay = new System.Windows.Forms.Label();
             this.lblHoldDelay = new System.Windows.Forms.Label();
@@ -212,6 +213,7 @@
             this.grpReset.Controls.Add(this.numResetPreClickDelay);
             this.grpReset.Controls.Add(this.btnKeyReset);
             this.grpReset.Controls.Add(this.lblKeyReset);
+            this.grpReset.Controls.Add(this.chkEditToConfirmReset);
             this.grpReset.Location = new System.Drawing.Point(3, 245);
             this.grpReset.Name = "grpReset";
             this.grpReset.Size = new System.Drawing.Size(326, 82);
@@ -280,6 +282,17 @@
             this.lblKeyReset.Size = new System.Drawing.Size(28, 13);
             this.lblKeyReset.TabIndex = 0;
             this.lblKeyReset.Text = "Key:";
+            // 
+            // chkEditToConfirmReset
+            // 
+            this.chkEditToConfirmReset.AutoSize = true;
+            this.chkEditToConfirmReset.Location = new System.Drawing.Point(168, 21);
+            this.chkEditToConfirmReset.Name = "chkEditToConfirmReset";
+            this.chkEditToConfirmReset.Size = new System.Drawing.Size(121, 17);
+            this.chkEditToConfirmReset.TabIndex = 7;
+            this.chkEditToConfirmReset.Text = "Press edit to confirm";
+            this.chkEditToConfirmReset.UseVisualStyleBackColor = true;
+            this.chkEditToConfirmReset.CheckedChanged += new System.EventHandler(this.changeCheckEvent);
             // 
             // grpDnR
             // 
@@ -558,6 +571,7 @@
         private System.Windows.Forms.NumericUpDown numResetPreClickDelay;
         private System.Windows.Forms.Button btnKeyReset;
         private System.Windows.Forms.Label lblKeyReset;
+        private System.Windows.Forms.CheckBox chkEditToConfirmReset;
         private System.Windows.Forms.NumericUpDown numMouseId;
         private System.Windows.Forms.Label lblMouseId;
         private System.Windows.Forms.GroupBox groupBox1;

@@ -110,7 +110,7 @@ namespace FortEZEdit
                 input.SendKey(defaultSettings.FnKey_Floor);
                 input.SendMouseEvent(MouseState.LeftDown);
 
-                Thread.Sleep(300);
+                Thread.Sleep(240);
 
                 // Look up slightly
                 input.MoveMouseBy(0, -600, true);
@@ -199,6 +199,7 @@ namespace FortEZEdit
         }
         
         private bool waitingForDnRUp;
+        private bool waitingForResetUp;
         private bool paused;
         private bool isEditRampPlaceModifierDown;
         private bool triggeredEditRampPlace;
@@ -285,16 +286,24 @@ namespace FortEZEdit
                     waitingForDnRUp = false;
                 }
             }
-            else if (defaultSettings.Key_Reset == e.Key && e.State == KeyState.Down)
+            else if (defaultSettings.Key_Reset == e.Key && e.State == KeyState.Down && !waitingForResetUp)
             {
+                waitingForResetUp = true;
                 Task.Run(() =>
                 {
                     input.SendKey(defaultSettings.FnKey_Edit);
                     Thread.Sleep(defaultSettings.Delay_ResetPreClick);
                     input.SendRightClick();
-                    Thread.Sleep(defaultSettings.Delay_ResetPostClick);
-                    input.SendKey(defaultSettings.FnKey_Edit);
+                    if (defaultSettings.Check_EditToConfirmReset)
+                    {
+                        Thread.Sleep(defaultSettings.Delay_ResetPostClick);
+                        input.SendKey(defaultSettings.FnKey_Edit);
+                    }
                 });
+            }
+            else if (defaultSettings.Key_Reset == e.Key && e.State == KeyState.Up)
+            {
+                waitingForResetUp = false;
             }
         }
 
